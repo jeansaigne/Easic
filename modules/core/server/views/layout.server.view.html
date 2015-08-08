@@ -12,7 +12,7 @@
 	<base href="/"/>
 
 	<!-- Responsive META -->
-	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1, user-scalable=no">
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="apple-mobile-web-app-status-bar-style" content="black">
 
@@ -48,12 +48,9 @@
 </head>
 
 <body class="ng-cloak">
-	<header data-ng-include="'/modules/core/views/header.client.view.html'" class="navbar navbar-fixed-top navbar-inverse"></header>
-	<section class="content">
-		<section class="container">
+	<md-content id="content" layout="column" layout-align="center center">
 			{% block content %}{% endblock %}
-		</section>
-	</section>
+	</md-content>
 
 	<!--Embedding The User Object-->
 	<script type="text/javascript">
