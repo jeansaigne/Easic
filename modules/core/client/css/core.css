@@ -32,6 +32,6 @@ a:hover .header-profile-image {
 	padding-bottom: 11px !important;
 }
 
-#content {
+.content {
 	height: 100%;
 }
