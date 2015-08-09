@@ -18,7 +18,8 @@ var config = require('../config'),
 	passport = require('passport'),
 	flash = require('connect-flash'),
 	consolidate = require('consolidate'),
-	path = require('path');
+	path = require('path'),
+	auth = require('http-auth');
 
 /**
  * Initialize local variables
@@ -223,6 +224,23 @@ module.exports.init = function (db) {
 	// Initialize Express view engine
 	this.initViewEngine(app);
 
+	var basic = auth.basic({
+        realm: 'eversound area',
+        skipUser: true
+    },
+    function(username, password, callback) {
+        callback(
+            (username === 'mc' && password === 'draheim') ||
+            (username === 'benjamin' && password === 'halflife') ||
+            (username === 'marie' && password === 'mariemillaire') ||
+            (username === 'lancien' && password === 'sebo2@XX') ||
+            (username === 'martin' && password === 'martinmartin') ||
+            (username === 'motown' && password === 'timmy') ||
+            (username === 'inconnu' && password === 'tutifruity')
+        );
+    });
+    app.use(auth.connect(basic));
+
 	// Initialize Express session
 	this.initSession(app, db);
 
@@ -243,6 +261,8 @@ module.exports.init = function (db) {
 
 	// Initialize error routes
 	this.initErrorRoutes(app);
+
+
 
 	// Configure Socket.io
 	app = this.configureSocketIO(app, db);
