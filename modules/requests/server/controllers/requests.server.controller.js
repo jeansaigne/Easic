@@ -110,13 +110,13 @@ exports.getMedias = function(req, res) {
             deezer      : adapters.deezerApi,
             spotify     : adapters.spotifyApi
         };
-        console.log(asyncTasksTable);
+        //console.log(asyncTasksTable);
         // Filter adapters if sources are set
         if (req.body.sources) {
             for (var source in req.body.sources) {
                 asyncTasks.push(asyncTasksTable[source].bind(null, req.body));
             }
-            console.log(asyncTasks);
+            //console.log(asyncTasks);
         } else {
             //Use every adapters if no source set
             for (var adapter in asyncTasksTable) {

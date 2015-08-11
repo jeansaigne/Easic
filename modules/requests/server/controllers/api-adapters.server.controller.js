@@ -50,7 +50,6 @@ exports.dailymotionApi = function(params, callback) {
 * */
 exports.vimeoApi = function(params, callback) {
     var Vimeo = require('vimeo').Vimeo;
-    console.log(params);
     var lib = new Vimeo('fdfd207f8a4d8e18f98a5355f81906130e60fd35', 'gNP2iwWTv5nm+q68KWIog1bQKBGA+k3n7X9pelhhpjmYvRWw+Ks75LCezMMW/dSrubwp8yJcMxy2CFoID4z5Rua03DgFRyRTGBPanPyv25jedEBUJSmqSCs5y4i5y6k4', '3362e455675da4faa4a27a67554df2e4');
     lib.request({
         // This is the path for the videos contained within the staff picks channels
