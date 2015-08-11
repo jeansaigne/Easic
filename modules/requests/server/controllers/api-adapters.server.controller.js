@@ -12,7 +12,7 @@ exports.youtubeApi = function(params, callback) {
 
     youTube.setKey('AIzaSyBVsIBrr7VmuhNN-NvRVWw-gZA4vjj1YeA');
 
-    youTube.search(params.q, 1, function(error, result) {
+    youTube.search(params.q, 20, function(error, result) {
         if (error) {
             callback({message: 'getYoutubeMedias: Une erreur s\'est produite.'}, null);
         }
@@ -30,7 +30,7 @@ exports.soundcloudApi = function(params, callback) {
     SC.init({
         id: '297a1ba0221212502262213f257f0e7f'
     });
-    SC.get('/tracks', { q: params.q, limit: 1 }, function(err, tracks) {
+    SC.get('/tracks', { q: params.q, limit: 20 }, function(err, tracks) {
         if (err)
             callback(err,null);
         else
@@ -58,7 +58,8 @@ exports.vimeoApi = function(params, callback) {
         // This adds the parameters to request page two, and 10 items per page
         query : {
             query: params.q,
-            per_page : 1
+            per_page : 20,
+            fields: 'uri,name,description,link,duration,embed,content_rating,pictures'
         }
     }, function(err, results) {
         callback(err,{vimeo: results});
@@ -70,7 +71,7 @@ exports.vimeoApi = function(params, callback) {
 * */
 exports.deezerApi = function(params, callback) {
     var deezer = require('node-deezer-api-client');
-    deezer.requestData('/search?q=track:\''+params.q+'\'&limit=1', function(err, results) {
+    deezer.requestData('/search?q=track:\''+params.q+'\'&limit=20', function(err, results) {
         callback(err, {deezer: results});
     });
 };
@@ -80,7 +81,7 @@ exports.deezerApi = function(params, callback) {
 * */
 exports.spotifyApi = function(params, callback) {
     var spotify = require('spotify');
-    spotify.search({ type: 'track', params: params.q, limit: 1 }, function(err, data) {
+    spotify.search({ type: 'track', params: params.q, limit: '20' }, function(err, data) {
         callback(err, {spotify: data});
     });
 };
