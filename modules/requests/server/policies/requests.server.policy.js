@@ -9,34 +9,37 @@ var acl = require('acl');
 acl = new acl(new acl.memoryBackend());
 
 /**
- * Invoke Sounds Permissions
+ * Invoke Requests Permissions
  */
 exports.invokeRolesPolicies = function() {
 	acl.allow([{
 		roles: ['admin'],
 		allows: [{
-			resources: '/api/sounds',
+			resources: '/api/requests',
 			permissions: '*'
 		}, {
-			resources: '/api/sounds/:soundId',
+			resources: '/api/requests/:requestId',
 			permissions: '*'
 		}]
 	}, {
 		roles: ['user'],
 		allows: [{
-			resources: '/api/sounds',
+			resources: '/api/requests',
 			permissions: ['get', 'post']
 		}, {
-			resources: '/api/sounds/:soundId',
+			resources: '/api/requests/:requestId',
 			permissions: ['get']
 		}]
 	}, {
 		roles: ['guest'],
 		allows: [{
-			resources: '/api/sounds',
+			resources: '/api/requests',
 			permissions: ['get']
 		}, {
-			resources: '/api/sounds/:soundId',
+			resources: '/api/requests/:requestId',
+			permissions: ['get']
+		}, {
+			resources: '/api/requests/getMedias',
 			permissions: ['get']
 		}]
 	}]);
@@ -48,8 +51,8 @@ exports.invokeRolesPolicies = function() {
 exports.isAllowed = function(req, res, next) {
 	var roles = (req.user) ? req.user.roles : ['guest'];
 
-	// If an sound is being processed and the current user created it then allow any manipulation
-	if (req.sound && req.user && req.sound.user.id === req.user.id) {
+	// If an request is being processed and the current user created it then allow any manipulation
+	if (req.request && req.user && req.request.user.id === req.user.id) {
 		return next();
 	}
 
