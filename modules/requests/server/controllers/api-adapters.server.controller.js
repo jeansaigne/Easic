@@ -64,3 +64,13 @@ exports.vimeoApi = function(callback) {
         callback(err,{vimeo: results});
     });
 };
+
+/*
+* Deezer api adapter
+* */
+exports.deezerApi = function(callback) {
+    var deezer = require('node-deezer-api-client');
+    deezer.requestData('/search?q=track:\'toto\'&limit=1', function(err, results) {
+        callback(err, {deezer: results});
+    });
+};
