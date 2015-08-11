@@ -92,24 +92,48 @@ exports.list = function(req, res) { Request.find().sort('-created').populate('us
 exports.requestByID = function(req, res, next, id) { Request.findById(id).populate('user', 'displayName').exec(function(err, request) {
 		if (err) return next(err);
 		if (! request) return next(new Error('Failed to load Request ' + id));
-		req.request = request ;
+		req.request = request;
 		next();
 	});
 };
 
 exports.getMedias = function(req, res) {
-    // Array to hold async tasks
-    var asyncTasks = [adapters.youtubeApi, adapters.soundcloudApi, adapters.vimeoApi, adapters.deezerApi, adapters.spotifyApi];
+	if (req.body.q) {
 
-    // Now we have an array of functions doing async tasks
-    // Execute all async tasks in the asyncTasks array
-    async.parallel(asyncTasks, function(err, results){
-        // All tasks are done now
-        if (err)
-            res.jsonp(err);
-        else
-            res.jsonp(results);
-    });
+		// Array to hold async tasks
+        var asyncTasks = [];
+        // Array index adapters async tasks
+		var asyncTasksTable = {
+            youtube     : adapters.youtubeApi,
+            soundcloud  : adapters.soundcloudApi,
+            vimeo       : adapters.vimeoApi,
+            deezer      : adapters.deezerApi,
+            spotify     : adapters.spotifyApi
+        };
+        console.log(asyncTasksTable);
+        // Filter adapters if sources are set
+        if (req.body.sources) {
+            for (var source in req.body.sources) {
+                asyncTasks.push(asyncTasksTable[source].bind(null, req.body));
+            }
+            console.log(asyncTasks);
+        } else {
+            //Use every adapters if no source set
+            for (var adapter in asyncTasksTable) {
+                asyncTasks.push(asyncTasksTable[adapter].bind(null, req.body));
+            }
+        }
+		// Now we have an array of functions doing async tasks
+		// Execute all async tasks in the asyncTasks array
+		async.parallelLimit(asyncTasks, 3, function (err, results) {
+			// All tasks are done now
+			if (err)
+                res.jsonp(err);
+            else
+                res.jsonp(results);
+		});
+	} else
+		res.jsonp({message: 'Error: q parameter is needed.'});
 };
 
 

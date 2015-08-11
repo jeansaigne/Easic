@@ -15,7 +15,7 @@ module.exports = function(app) {
 		.delete(requests.delete);
 
 	app.route('/api/getMedias').all()
-		.get(requests.getMedias);
+		.post(requests.getMedias);
 
 	// Finish by binding the Request middleware
 	app.param('requestId', requests.requestByID);
