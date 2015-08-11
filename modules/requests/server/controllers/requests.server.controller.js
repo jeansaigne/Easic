@@ -99,7 +99,7 @@ exports.requestByID = function(req, res, next, id) { Request.findById(id).popula
 
 exports.getMedias = function(req, res) {
     // Array to hold async tasks
-    var asyncTasks = [adapters.youtubeApi, adapters.soundcloudApi, adapters.vimeoApi, adapters.deezerApi];
+    var asyncTasks = [adapters.youtubeApi, adapters.soundcloudApi, adapters.vimeoApi, adapters.deezerApi, adapters.spotifyApi];
 
     // Now we have an array of functions doing async tasks
     // Execute all async tasks in the asyncTasks array

@@ -74,3 +74,13 @@ exports.deezerApi = function(callback) {
         callback(err, {deezer: results});
     });
 };
+
+/*
+* Spotify api adapter
+* */
+exports.spotifyApi = function(callback) {
+    var spotify = require('spotify');
+    spotify.search({ type: 'track', query: 'toto', limit: 1 }, function(err, data) {
+        callback(err, {spotify: data});
+    });
+};
