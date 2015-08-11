@@ -103,7 +103,7 @@ function getYoutubeMedias(callback) {
 
 	youTube.setKey('AIzaSyBVsIBrr7VmuhNN-NvRVWw-gZA4vjj1YeA');
 
-	youTube.search('mc25cm', 30, function(error, result) {
+	youTube.search('mc25cm', 2, function(error, result) {
 		if (error) {
 			callback({message: 'getYoutubeMedias: Une erreur s\'est produite.'}, null);
 		}
@@ -113,9 +113,22 @@ function getYoutubeMedias(callback) {
 	});
 }
 
+function getSoundCloudMedias(callback) {
+    var SC = require('node-soundcloud');
+    SC.init({
+        id: '297a1ba0221212502262213f257f0e7f'
+    });
+    SC.get('/tracks', { q: 'toto', limit: 2 }, function(err, tracks) {
+        if (err)
+            callback(err,null);
+        else
+            callback(null,tracks);
+    });
+}
+
 exports.getMedias = function(req, res) {
     // Array to hold async tasks
-    var asyncTasks = [getYoutubeMedias];
+    var asyncTasks = [getYoutubeMedias,getSoundCloudMedias];
 
     // Now we have an array of functions doing async tasks
     // Execute all async tasks in the asyncTasks array
