@@ -10,7 +10,7 @@ var mongoose = require('mongoose'),
  * Request Schema
  */
 var RequestSchema = new Schema({
-	name: {
+	content: {
 		type: String,
 		default: '',
 		required: 'Please fill Request name',

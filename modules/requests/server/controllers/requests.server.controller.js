@@ -7,7 +7,8 @@ var _ = require('lodash'),
 	path = require('path'),
 	mongoose = require('mongoose'),
 	Request = mongoose.model('Request'),
-	errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller'));
+	errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller')),
+    async = require('async');
 
 /**
  * Create a Request
@@ -95,13 +96,36 @@ exports.requestByID = function(req, res, next, id) { Request.findById(id).popula
 	});
 };
 
-function getYoutubeMedias() {
+function getYoutubeMedias(callback) {
+	var YouTube = require('youtube-node');
 
-	return 'ok';
+	var youTube = new YouTube();
+
+	youTube.setKey('AIzaSyBVsIBrr7VmuhNN-NvRVWw-gZA4vjj1YeA');
+
+	youTube.search('mc25cm', 30, function(error, result) {
+		if (error) {
+			callback({message: 'getYoutubeMedias: Une erreur s\'est produite.'}, null);
+		}
+		else {
+			callback(null, result);
+		}
+	});
 }
 
 exports.getMedias = function(req, res) {
-	res.jsonp(getYoutubeMedias());
+    // Array to hold async tasks
+    var asyncTasks = [getYoutubeMedias];
+
+    // Now we have an array of functions doing async tasks
+    // Execute all async tasks in the asyncTasks array
+    async.parallel(asyncTasks, function(err, results){
+        // All tasks are done now
+        if (err)
+            res.jsonp(err);
+        else
+            res.jsonp(results);
+    });
 };
 
 
