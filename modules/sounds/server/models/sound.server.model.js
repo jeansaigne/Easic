@@ -21,7 +21,7 @@ var SoundSchema = new Schema({
 		required: 'Title cannot be blank'
 	},
 	type: {
-		type: Number,
+		type: String,
 		default: 0,
 		trim: true,
 		required: 'Type cannot be blank'
@@ -31,12 +31,6 @@ var SoundSchema = new Schema({
 		default: '',
 		trim: true,
 		required: 'Url cannot be blank'
-	},
-	kind: {
-		type: String,
-		default: '',
-		trim: true,
-		required: 'Kind cannot be blank'
 	},
 	playlistId:{
 		type: String,
@@ -64,7 +58,7 @@ var SoundSchema = new Schema({
 	},
 	available: {
 		type: Boolean,
-		default: false
+		default: true
 	}
 });
 

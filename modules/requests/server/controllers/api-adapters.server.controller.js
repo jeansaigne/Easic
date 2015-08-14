@@ -12,13 +12,27 @@ exports.youtubeApi = function(params, callback) {
 
     youTube.setKey('AIzaSyBVsIBrr7VmuhNN-NvRVWw-gZA4vjj1YeA');
 
-    youTube.search(params.q, 20, function(error, result) {
-        if (error) {
-            callback({message: 'getYoutubeMedias: Une erreur s\'est produite.'}, null);
+    youTube.search(params.q, 20, function(error, results) {
+        var formattedResults = [];
+        var formattedMetas = {};
+        formattedMetas = results.pageInfo;
+        formattedMetas.nextPage = results.nextPageToken;
+        for (var video in results.items) {
+            var item = {};
+            item.title = results.items[video].snippet.title;
+            item.type = 'youtube';
+            item.url = results.items[video].id.videoId || results.items[video].id.playlistId || results.items[video].id.channelId;
+            item.image = results.items[video].snippet.thumbnails.medium.url;
+            item.kind = results.items[video].id.kind.slice(8);
+            formattedResults.push(item);
         }
-        else {
-            callback(null, {youtube : result});
-        }
+        var formattedResponse = {
+            youtube: {
+                infos : formattedMetas,
+                items : formattedResults
+            }
+        };
+        callback(error, formattedResponse);
     });
 };
 
@@ -30,11 +44,29 @@ exports.soundcloudApi = function(params, callback) {
     SC.init({
         id: '297a1ba0221212502262213f257f0e7f'
     });
-    SC.get('/tracks', { q: params.q, limit: 20 }, function(err, tracks) {
-        if (err)
-            callback(err,null);
-        else
-            callback(null,{soundcloud: tracks});
+    SC.get('/tracks', { q: params.q, limit: 20 }, function(err, results) {
+        var formattedResults = [];
+        var formattedMetas = {};
+        formattedMetas.perPage = results.length;
+        //formattedMetas.nextPage = results.nextPageToken;
+        for (var video in results) {
+            var item = {};
+            item.title = results[video].title;
+            item.type = 'soundcloud';
+            item.url = results[video].stream_url;
+            item.image = results[video].artwork_url || '/images/sound_default.png';
+            item.kind = results[video].kind;
+            item.duration = results[video].duration;
+            item.waveform = results[video].waveform_url;
+            formattedResults.push(item);
+        }
+        var formattedResponse = {
+            soundcloud: {
+                infos : formattedMetas,
+                items : formattedResults
+            }
+        };
+        callback(err, formattedResponse);
     });
 };
 
@@ -61,7 +93,27 @@ exports.vimeoApi = function(params, callback) {
             fields: 'uri,name,description,link,duration,embed,content_rating,pictures'
         }
     }, function(err, results) {
-        callback(err,{vimeo: results});
+        var formattedResults = [];
+        var formattedMetas = {};
+        formattedMetas.totalResults = results.total;
+        formattedMetas.nextPage = results.paging.next;
+        formattedMetas.perPage = results.per_page;
+        for (var video in results.data) {
+            var item = {};
+            item.title = results.data[video].name;
+            item.type = 'vimeo';
+            item.url = results.data[video].uri;
+            item.image = results.data[video].pictures.sizes[3].link || '/images/sound_default.png';
+            item.embed = results.data[video].embed.html;
+            formattedResults.push(item);
+        }
+        var formattedResponse = {
+            vimeo: {
+                infos : formattedMetas,
+                items : formattedResults
+            }
+        };
+        callback(err, formattedResponse);
     });
 };
 
@@ -71,7 +123,27 @@ exports.vimeoApi = function(params, callback) {
 exports.deezerApi = function(params, callback) {
     var deezer = require('node-deezer-api-client');
     deezer.requestData('/search?q=track:\''+params.q+'\'&limit=20', function(err, results) {
-        callback(err, {deezer: results});
+        var formattedResults = [];
+        var formattedMetas = {};
+        formattedMetas.totalResults = results.total;
+        formattedMetas.nextPage = results.next;
+        for (var video in results.data) {
+            var item = {};
+            item.title = results.data[video].title;
+            item.type = 'deezer';
+            item.url = results.data[video].id;
+            item.image = results.data[video].artist.picture_medium || '/images/sound_default.png';
+            item.kind = results.data[video].type;
+            item.duration = results.data[video].duration;
+            formattedResults.push(item);
+        }
+        var formattedResponse = {
+            deezer: {
+                infos : formattedMetas,
+                items : formattedResults
+            }
+        };
+        callback(err, formattedResponse);
     });
 };
 
@@ -80,7 +152,29 @@ exports.deezerApi = function(params, callback) {
 * */
 exports.spotifyApi = function(params, callback) {
     var spotify = require('spotify');
-    spotify.search({ type: 'track', params: params.q, limit: '20' }, function(err, data) {
-        callback(err, {spotify: data});
+    spotify.search({ type: 'track', query: params.q, limit: '2' }, function(err, results) {
+        var formattedResults = [];
+        var formattedMetas = {};
+        formattedMetas.totalResults = results.tracks.total;
+        formattedMetas.perPage = results.tracks.limit;
+        formattedMetas.nextPage = results.tracks.next;
+        for (var video in results.tracks.items) {
+            var item = {};
+            item.title = results.tracks.items[video].name;
+            item.type = 'deezer';
+            item.url = results.tracks.items[video].href;
+            item.image = results.tracks.items[video].album.images[1].url || '/images/sound_default.png';
+            item.kind = results.tracks.items[video].type;
+            item.duration = results.tracks.items[video].duration_ms;
+            item.uri = results.tracks.items[video].uri;
+            formattedResults.push(item);
+        }
+        var formattedResponse = {
+            spotify: {
+                infos : formattedMetas,
+                items : formattedResults
+            }
+        };
+        callback(err, formattedResponse);
     });
 };
