@@ -13,8 +13,7 @@
             <md-list>
                 <md-list-item class="md-2-line" data-ng-repeat="(roomname,users) in rooms">
                     <div class="md-list-item-text">
-                        <h3>{{roomname}}[{{users.length}}]</h3>
-                        <!--<md-icon class="md-secondary" ng-click="doSecondaryAction($event)" aria-label="Chat" md-svg-icon="communication:message"></md-icon>-->
+                        <p layout-align="left center" layout="row"><i class="material-icons">chat</i><strong>{{roomname}}[{{users.length}}]</strong></p>
                     </div>
                 </md-list-item>
             </md-list>
@@ -58,17 +57,17 @@
             </form>
         </md-content>
         <md-content flex="20" layout-fill>
-            <md-toolbar class="md-accent">
+            <md-toolbar class="md-primary md-hue-1">
                 <div class="md-toolbar-tools">
                     <h2 class="md-flex">Users</h2>
                 </div>
             </md-toolbar>
             <md-list>
                 <md-list-item data-ng-repeat="user in rooms[room]">
-                    <!--<div class="md-list-item-text">-->
+                    <div class="md-list-item-text">
                         <p layout-align="left center" layout="row"><i class="material-icons md-24">person</i><strong>{{user}}</strong></p>
                         <!--<md-icon class="md-secondary" ng-click="doSecondaryAction($event)" aria-label="Chat" md-svg-icon="communication:message"></md-icon>-->
-                    <!--</div>-->
+                    </div>
                 </md-list-item>
             </md-list>
         </md-content>
