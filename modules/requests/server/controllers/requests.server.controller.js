@@ -97,6 +97,34 @@ exports.requestByID = function(req, res, next, id) { Request.findById(id).popula
 	});
 };
 
+exports.autocomplete = function(req, res) {
+    if (req.query.q) {
+        var YouTube = require('youtube-node');
+        var youTube = new YouTube();
+
+        youTube.setKey('AIzaSyBVsIBrr7VmuhNN-NvRVWw-gZA4vjj1YeA');
+
+        youTube.addParam('fields', 'items(snippet(title))');
+
+        youTube.search(req.query.q, 10, function (error, results) {
+            if (error) {
+                res.jsonp(error);
+            } else {
+                var formattedResponse = [];
+                for (var index in results.items) {
+                    formattedResponse.push(results.items[index].snippet.title);
+                }
+                res.jsonp(formattedResponse);
+            }
+        });
+    } else {
+		res.jsonp({error: {
+			message : 'Parameter q (keywords) is missing from query'
+			}
+		});
+	}
+};
+
 exports.getMedias = function(req, res) {
 	if (req.body.q) {
 

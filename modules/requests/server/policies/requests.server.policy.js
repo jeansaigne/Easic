@@ -41,6 +41,9 @@ exports.invokeRolesPolicies = function() {
 		}, {
 			resources: '/api/requests/getMedias',
 			permissions: ['get']
+		}, {
+			resources: '/api/requests/getMedias',
+			permissions: ['get']
 		}]
 	}]);
 };
