@@ -84,4 +84,7 @@ header{
 #bodyContent{
 	background-color: transparent;
 }
+a{
+	cursor: pointer;
+}
 
