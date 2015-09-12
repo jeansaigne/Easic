@@ -10,6 +10,7 @@
 #itemHomeLeft{
     width: 60%;
     margin-right: 30px;
+    text-align: center;
 }
 #settingHomeDiv{
     width: calc(40% - 33px);
@@ -28,23 +29,32 @@
 #welcomeHomeDiv{
     background-color: #292728;
     /*max-width: 65%;*/
-    /*height: 45%;*/
+    height: calc(100% - 133px);
     padding: 20px 30px;
     /*margin-bottom: 10%;*/
     opacity: 0.9;
     color: white;
 }
+.home-feature-square{
+    height: 100px;
+    width: calc(25% - 3px);
+    margin-top: 30px;
+}
 #exploreHomeDiv{
     background-color: #F5A534;
+    /*margin-right: 30px;*/
 }
 #playerHomeDiv{
     background-color: #F54A39;
+    /*margin-right: 30px;*/
 }
 #playlistHomeDiv{
     background-color: #2DCC70;
+    /*margin-right: 30px;*/
 }
 #salonHomeDiv{
     background-color: #51B3D8;
+    /*float: right;*/
 }
 
 

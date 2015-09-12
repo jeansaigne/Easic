@@ -76,6 +76,10 @@ a:hover .header-profile-image {
 body{
 	font-family: Oswald;
 	background-image: url('http://saimg-a.akamaihd.net/saatchi/315890/art/2602732/1672625-LFDWHUHK-8.jpg');
+	min-width: 1000px;
+}
+header{
+	min-width: 1000px;
 }
 #bodyContent{
 	background-color: transparent;
