@@ -58,8 +58,14 @@
     /*float: right;*/
 }
 
-.content-info {
+.content-info:not(.content-info-explore) {
     display: none;
+}
+
+.content-info {
+    color: black;
+    background-color: rgba(255, 255, 255, 0.5);
+    overflow: hidden;
 }
 
 
