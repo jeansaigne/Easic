@@ -43,10 +43,11 @@
 		</div>
 	</div>
 	<div class="item-home home-feature-div" id="settingHomeDiv">
-		<div>
-			<h3>Bienvenue {{authentication.user.displayName}}</h3>
-		</div>
+
 		<div data-ng-show="authentication.user">
+			<div>
+				<h3>Bienvenue {{authentication.user.displayName}}</h3>
+			</div>
 			<div>
 				<h3>Dernières recherches</h3>
 				<md-chips ng-model="ctrl.roFruitNames" readonly="ctrl.readonly">
@@ -58,14 +59,17 @@
 			</div>
 		</div>
 		<div id="signHome" class="fillContainer" data-ng-hide="authentication.user">
-			<div class="signinupItem">
-				<a>S'inscrire</a>
+			<div class="signinupItem" ng-init="authentication.showSignupForm = false">
+				<a ng-click="authentication.showSignupForm = !authentication.showSignupForm ; authentication.showSigninForm = false">S'inscrire</a>
 			</div>
-			<div class="signinupItem">
-				<a>Se logguer</a>
+			<div class="signinupItem" ng-init="authentication.showSigninForm = false">
+				<a ng-click="authentication.showSigninForm = !authentication.showSigninForm; authentication.showSignupForm = false">Se logguer</a>
 			</div>
-			<div id="socialNetworkContainer">
+			<div ng-show="authentication.showSigninForm" data-ng-include="'modules/users/views/authentication/signin.client.view.html'"></div>
+			<div ng-show="authentication.showSignupForm" data-ng-include="'modules/users/views/authentication/signup.client.view.html'"></div>
 
+			<div id="socialNetworkContainer" class="fillContainer">
+				<div class="fillContainer" data-ng-include="'modules/users/views/authentication/authentication.client.view.html'"></div>
 			</div>
 
 		</div>
