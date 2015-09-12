@@ -1,0 +1,50 @@
+#homeSection{
+    padding: 100px 150px;
+}
+.item-home{
+    display: inline-block;
+    vertical-align: top;
+    /*min-height: 60%;*/
+    height: 100%;
+}
+#itemHomeLeft{
+    width: 60%;
+    margin-right: 30px;
+}
+#settingHomeDiv{
+    width: calc(40% - 33px);
+    background-color: #DE0C83;
+    padding: 20px 30px;
+}
+.home-feature-div{
+    /*height: 45%;*/
+    /*min-width: 150px;*/
+    display: inline-block;
+    /*margin-right: 24px;*/
+    padding: 20px 30px;
+    opacity: 0.9;
+    color: white;
+}
+#welcomeHomeDiv{
+    background-color: #292728;
+    /*max-width: 65%;*/
+    /*height: 45%;*/
+    padding: 20px 30px;
+    /*margin-bottom: 10%;*/
+    opacity: 0.9;
+    color: white;
+}
+#exploreHomeDiv{
+    background-color: #F5A534;
+}
+#playerHomeDiv{
+    background-color: #F54A39;
+}
+#playlistHomeDiv{
+    background-color: #2DCC70;
+}
+#salonHomeDiv{
+    background-color: #51B3D8;
+}
+
+

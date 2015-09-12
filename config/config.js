@@ -119,6 +119,7 @@ var initGlobalConfigFiles = function(config, assets) {
 
     // Setting Globbed js files
     config.files.client.js = getGlobbedPaths(assets.client.lib.js, 'public/').concat(getGlobbedPaths(assets.client.js, ['client/', 'public/']));
+    console.log(config.files.client.js);
 
     // Setting Globbed css files
     config.files.client.css = getGlobbedPaths(assets.client.lib.css, 'public/').concat(getGlobbedPaths(assets.client.css, ['client/', 'public/']));
