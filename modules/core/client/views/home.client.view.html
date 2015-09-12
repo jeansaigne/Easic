@@ -20,6 +20,21 @@
 		<div>
 			<h3>Bienvenue {{authentication.user.displayName}}</h3>
 		</div>
+		<div data-ng-show="authentication.user">
+			<div>
+				<h3>Dernières recherches</h3>
+				<md-chips ng-model="ctrl.roFruitNames" readonly="ctrl.readonly">
+					<md-chip-template>
+						<strong>Apple</strong>
+						<em></em>
+					</md-chip-template>
+				</md-chips>
+			</div>
+		</div>
+		<div data-ng-hide="authentication.user">
+			<a>S'inscrire</a>
+			<a>Se logguer</a>
+		</div>
 	</div>
 	<!--<div class="jumbotron">-->
 		<!--<div class="row">-->
