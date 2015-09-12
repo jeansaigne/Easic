@@ -123,6 +123,14 @@ var initGlobalConfigFiles = function(config, assets) {
 
     // Setting Globbed css files
     config.files.client.css = getGlobbedPaths(assets.client.lib.css, 'public/').concat(getGlobbedPaths(assets.client.css, ['client/', 'public/']));
+    // Setting Globbed css files
+    config.files.client.cssmobile = getGlobbedPaths(assets.client.lib.css, 'public/').concat(getGlobbedPaths(assets.client.css, ['client/', 'public/']));
+    for(var i = 0 ; i < config.files.client.cssmobile.length ; i++){
+        if(config.files.client.cssmobile[i] == "modules/core/css/core.css"){
+            config.files.client.cssmobile.splice(i, 1);
+        }
+    }
+    console.log(config.files.client.cssmobile);
 
     // Setting Globbed test files
     config.files.client.tests = getGlobbedPaths(assets.client.tests);

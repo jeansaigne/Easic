@@ -10,7 +10,7 @@ exports.renderIndex = function(req, res) {
 			user: req.user || null
 		});
 	}else{
-		res.render('modules/core/server/views/index', {
+		res.render('modules/core/server/views/index-mobile', {
 			user: req.user || null
 		});
 	}
