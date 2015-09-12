@@ -19,7 +19,7 @@ module.exports = {
 				'public/lib/angular-file-upload/dist/angular-file-upload.min.js',
 				'public/lib/angular-material/angular-material.min.js',
 				'public/lib/jquery/dist/jquery.js',
-				'public/lib/custom-lib/custom-lib.js'
+				'public/custom-lib/custom-lib.js'
 			],
 			tests: ['public/lib/angular-mocks/angular-mocks.js']
 		},
