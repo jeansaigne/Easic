@@ -2,17 +2,31 @@
 	<div id="itemHomeLeft" class="item-home">
 		<div id="welcomeHomeDiv">
 			<h1>Bienvenue sur Eazic</h1>
+			<div id="content-info">
+				<div class="content-info content-info-explore">
+					Explorer presentation
+				</div>
+				<div class="content-info content-info-player">
+					Player presentation
+				</div>
+				<div class="content-info content-info-playlist">
+					Playlist presentation
+				</div>
+				<div class="content-info content-info-rooms">
+					Rooms presentation
+				</div>
+			</div>
 		</div>
-		<div id="exploreHomeDiv" class="home-feature-div home-feature-square">
+		<div id="exploreHomeDiv" class="home-feature-div home-feature-square" data-content-info="explore" onmouseenter="showContentInfo()">
 			<h3>Explore</h3>
 		</div>
-		<div id="playerHomeDiv" class="home-feature-div home-feature-square">
+		<div id="playerHomeDiv" class="home-feature-div home-feature-square" data-content-info="player" onmouseenter="showContentInfo()">
 			<h3>Player</h3>
 		</div>
-		<div id="playlistHomeDiv" class="home-feature-div home-feature-square">
+		<div id="playlistHomeDiv" class="home-feature-div home-feature-square" data-content-info="playlist" onmouseenter="showContentInfo()">
 			<h3>Playlist</h3>
 		</div>
-		<div id="salonHomeDiv" class="home-feature-div home-feature-square">
+		<div id="salonHomeDiv" class="home-feature-div home-feature-square" data-content-info="rooms" onmouseenter="showContentInfo()">
 			<h3>Salon</h3>
 		</div>
 	</div>
