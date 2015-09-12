@@ -59,17 +59,17 @@
 					Explore
 				</a>
 			</li>
-			<li id="menuItemPlayer" class="menu-item">
+			<li id="menuItemPlayer" class="menu-item" onmouseenter="blurHomePage()" onmouseleave="unBlurHomePage()">
 				<a>
 					Player
 				</a>
 			</li>
-			<li id="menuItemPlaylist" class="menu-item">
+			<li id="menuItemPlaylist" class="menu-item" onmouseenter="blurHomePage()" onmouseleave="unBlurHomePage()">
 				<a>
 					Playlist
 				</a>
 			</li>
-			<li id="menuItemSalon" class="menu-item">
+			<li id="menuItemSalon" class="menu-item" onmouseenter="blurHomePage()" onmouseleave="unBlurHomePage()">
 				<a>
 					Salon
 				</a>
@@ -78,25 +78,4 @@
 	</nav>
 	<div id="navbarBorderBottom"></div>
 </div>
-<script type="text/javascript">
 
-	function blurHomePage(){
-		$('#homeSection').addClass('opacity50');
-
-	}
-
-	function unBlurHomePage(){
-		$('#homeSection').removeClass('opacity50');
-	}
-
-
-	function toggleAllMenu (){
-
-//		$('#lecteurMinimizedView').removeClass('viewItemFull').addClass('displayNone').addClass('').removeClass('displayBlock');
-//		$('#rechercheMinimizedView').removeClass('viewItemFull').addClass('displayNone').addClass('').removeClass('displayBlock');
-//		$('#playlistMinimizedView').removeClass('viewItemFull').addClass('displayNone').addClass('').removeClass('displayBlock'),
-//				$('#gestionPlaylist').addClass('displayNone').removeClass('item50pourcent'),
-//				$('#fileDeLectureContent').removeClass('item50pourcent'), $('#realTimePlaylistListMinimized').removeClass('scrollable');
-//		$('#salonMinimizedView').removeClass('viewItemFull').addClass('displayNone').addClass('').removeClass('displayBlock');
-	}
-</script>

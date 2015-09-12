@@ -5,3 +5,9 @@
 .opacity50{
     opacity: 0.5;
 }
+.animated-rapier{
+    -webkit-transition: all 0.4s ease-in-out;
+    -moz-transition: all 0.4s ease-in-out;
+    -o-transition: all 0.4s ease-in-out;
+    transition: all 0.4s ease-in-out;
+}
