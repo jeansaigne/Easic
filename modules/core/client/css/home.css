@@ -18,7 +18,7 @@
     width: calc(40% - 33px);
     background-color: #333333;
     padding: 20px;
-    max-height: 645px;
+    max-height: 100%;
 }
 
 #signHome, #signHome md-content {
