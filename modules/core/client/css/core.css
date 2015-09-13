@@ -106,11 +106,13 @@ a{
 	background-color: #333;
 	top: 50px;
 	z-index: 0;
-}
-.minifiedView{
-	width: 400%;
-	height: 300px;
-	/*z-index: ;*/
+	/*width: 150px;*/
+	/*background: -webkit-gradient(linear, left top, right top, from(rgba(51, 51, 51, 1)), to(rgba(51, 51, 51, 0.8)));*/
+	/*background: -webkit-linear-gradient(top, rgba(51, 51, 51, 1), rgba(51, 51, 51, 0.8));*/
+	/*background: -moz-linear-gradient(top, rgba(51, 51, 51, 1), rgba(51, 51, 51, 0.8));*/
+	/*background: -o-linear-gradient(top, rgba(51, 51, 51, 1), rgba(51, 51, 51, 0.8));*/
+	/*background: -ms-linear-gradient(top, rgba(51, 51, 51, 1), rgba(51, 51, 51, 0.8));*/
+	/*background: linear-gradient(top, rgba(51, 51, 51, 1), rgba(51, 51, 51, 0.8));*/
 }
 .hiddenView{
 	height: 300px;
@@ -118,6 +120,11 @@ a{
 	transform: translate3d(0, -100%, -10px);
 	/*opacity: 0;*/
 	z-index: 0;
+}
+.minifiedView{
+	width: 400%;
+	height: 300px;
+	/*z-index: ;*/
 }
 #exploreView.minifiedView{
 	transform: translate3d(0, 0, 0px);
@@ -130,4 +137,25 @@ a{
 }
 #salonView.minifiedView{
 	transform: translate3d(-450px, 0, 0px);
+}
+.maximisedView{
+	/*width: 800px;*/
+	/*height: 300px;*/
+	height: 80%;
+	width: 80%;
+	min-height: 300px;
+	max-height: 80%;
+	position: fixed;
+	left: 0;
+	margin: 3% 10%;
+	margin-top: 3%;
+	z-index: 0;
+	/*position: fixed;*/
+}
+#exploreView.maximisedView{
+	/*transform: translate3d(0, 0, +100px);*/
+	/*display: inline-block;*/
+	/*text-align: center;*/
+	/*transform: translate3d(-25%, 0, 0px);*/
+
 }

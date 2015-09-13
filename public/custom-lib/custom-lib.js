@@ -132,15 +132,113 @@ function toggleView(event){
     if (typeof(event)!='undefined') {
         blurHomePage();
         if($('#' + event.target.dataset.viewName + 'View').hasClass('minifiedView')){
-            $('#' + event.target.dataset.viewName + 'View').removeClass('minifiedView');
-            $('#' + event.target.dataset.viewName + 'View').removeClass('hiddenView');
-            $('#' + event.target.dataset.viewName + 'View').addClass('maximisedView');
-
+            showView(event);
+            hideAllOtherView(event);
         }else{
-            $('#' + event.target.dataset.viewName + 'View').removeClass('maximisedView');
-            $('#' + event.target.dataset.viewName + 'View').removeClass('hiddenView');
-            $('#' + event.target.dataset.viewName + 'View').addClass('minifiedView');
+            hideView(event);
         }
     }
 }
+function showView(event){
+    $('#' + event.target.dataset.viewName + 'View').removeClass('animated-rapier');
+    $('#' + event.target.dataset.viewName + 'View').addClass('maximisedView');
+    $('#' + event.target.dataset.viewName + 'View').removeClass('hiddenView');
+    $('#' + event.target.dataset.viewName + 'View').removeClass('minifiedView');
+    $(event.target).parent().addClass('borderBottomGrey');
+    console.log($(event.target).parent()[0].onmouseleave);
+    $(event.target).parent()[0].onmouseleave = function(){return false;}
+    $(event.target).parent()[0].onmouseenter = function(){return false;}
+}
+function hideView(event){
+    $(event.target).parent().removeClass('borderBottomGrey');
+    $('#' + event.target.dataset.viewName + 'View').removeClass('maximisedView');
+    $('#' + event.target.dataset.viewName + 'View').removeClass('hiddenView');
+    $('#' + event.target.dataset.viewName + 'View').addClass('minifiedView');
+
+    $(event.target).parent()[0].onmouseleave = hideViewMinified;
+    $(event.target).parent()[0].onmouseenter = showViewMinified;
+    setTimeout(function(){
+        $('#' + event.target.dataset.viewName + 'View').addClass('animated-rapier');
+    }, 400);
+}
+
+function hideAllOtherView(event){
+    switch(event.target.dataset.viewName){
+        case 'explore':
+            hidePlayerView();
+            hidePlaylistView();
+            hideSalonView();
+            break;
+        case 'player':
+            hideExploreView();
+            hidePlaylistView();
+            hideSalonView();
+            break;
+        case 'playlist':
+            hideExploreView();
+            hidePlayerView();
+            hideSalonView();
+            break;
+        case 'salon':
+            hideExploreView();
+            hidePlayerView();
+            hidePlaylistView();
+            break;
+        default:
+            break;
+    }
+}
+function hideExploreView(){
+    if($('#exploreView').hasClass('maximisedView')){
+        $('#menuItemExplore').removeClass('borderBottomGrey');
+        $('#exploreView').removeClass('maximisedView');
+        //$('#exploreView').removeClass('minifiedView');
+        $('#exploreView').addClass('hiddenView');
+        $('#menuItemExplore')[0].onmouseleave = hideViewMinified;
+        $('#menuItemExplore')[0].onmouseenter = showViewMinified;
+        setTimeout(function(){
+            $('#exploreView').addClass('animated-rapier');
+        }, 400);
+    }
+}
+function hidePlayerView(){
+    if($('#playerView').hasClass('maximisedView')){
+        $('#menuItemPlayer').removeClass('borderBottomGrey');
+        $('#playerView').removeClass('maximisedView');
+        //$('#playerView').removeClass('minifiedView');
+        $('#playerView').addClass('hiddenView');
+        $('#menuItemPlayer')[0].onmouseleave = hideViewMinified;
+        $('#menuItemPlayer')[0].onmouseenter = showViewMinified;
+        setTimeout(function(){
+            $('#playerView').addClass('animated-rapier');
+        }, 400);
+    }
+}
+function hidePlaylistView(){
+    if($('#playlistView').hasClass('maximisedView')){
+        $('#menuItemPlaylist').removeClass('borderBottomGrey');
+        $('#playlistView').removeClass('maximisedView');
+        //$('#playlistView').removeClass('minifiedView');
+        $('#playlistView').addClass('hiddenView');
+        $('#menuItemPlaylist')[0].onmouseleave = hideViewMinified;
+        $('#menuItemPlaylist')[0].onmouseenter = showViewMinified;
+        setTimeout(function(){
+            $('#playlistView').addClass('animated-rapier');
+        }, 400);
+    }
+}
+function hideSalonView(){
+    if($('#salonView').hasClass('maximisedView')){
+        $('#menuItemSalon').removeClass('borderBottomGrey');
+        $('#salonView').removeClass('maximisedView');
+        //$('#salonView').removeClass('minifiedView');
+        $('#salonView').addClass('hiddenView');
+        $('#menuItemSalon')[0].onmouseleave = hideViewMinified;
+        $('#menuItemSalon')[0].onmouseenter = showViewMinified;
+        setTimeout(function(){
+            $('#salonView').addClass('animated-rapier');
+        }, 400);
+    }
+}
+
 

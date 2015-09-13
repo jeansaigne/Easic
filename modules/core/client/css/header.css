@@ -69,6 +69,9 @@
     background-color: #333;
     height: 45px;
 }
+.menu-item:hover {
+    z-index: 50;
+}
 
 
 /*#menuItemExplore{*/

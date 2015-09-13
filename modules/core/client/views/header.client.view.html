@@ -60,15 +60,15 @@
 				<div id="exploreView" class="animated-rapier headerView hiddenView"></div>
 			</li>
 			<li id="menuItemPlayer" class="menu-item" data-view-name="player" onmouseenter="showViewMinified(event)" onmouseleave="hideViewMinified(event)">
-				<a>Player</a>
+				<a data-view-name="player" onclick="toggleView(event); event.stopPropagation();">Player</a>
 				<div id="playerView" class="animated-rapier headerView hiddenView"></div>
 			</li>
 			<li id="menuItemPlaylist" class="menu-item" data-view-name="playlist" onmouseenter="showViewMinified(event)" onmouseleave="hideViewMinified(event)">
-				<a>Playlist</a>
+				<a data-view-name="playlist" onclick="toggleView(event); event.stopPropagation();">Playlist</a>
 				<div id="playlistView" class="animated-rapier headerView hiddenView"></div>
 			</li>
 			<li id="menuItemSalon" class="menu-item" data-view-name="salon" onmouseenter="showViewMinified(event)" onmouseleave="hideViewMinified(event)">
-				<a>Salon</a>
+				<a data-view-name="salon" onclick="toggleView(event); event.stopPropagation();">Salon</a>
 				<div id="salonView" class="animated-rapier headerView hiddenView"></div>
 			</li>
 		</ul>
