@@ -124,4 +124,23 @@ function hideViewMinified(event){
         $('#' + event.target.dataset.viewName + 'View').addClass('hiddenView').removeClass('minifiedView');
     }
 }
+function toggleView(event){
+    event.stopPropagation();
+    console.log(event);
+    console.log(event.target.dataset.viewName);
+    console.log($('#' + event.target.dataset.viewName + 'View').hasClass('minifiedView'));
+    if (typeof(event)!='undefined') {
+        blurHomePage();
+        if($('#' + event.target.dataset.viewName + 'View').hasClass('minifiedView')){
+            $('#' + event.target.dataset.viewName + 'View').removeClass('minifiedView');
+            $('#' + event.target.dataset.viewName + 'View').removeClass('hiddenView');
+            $('#' + event.target.dataset.viewName + 'View').addClass('maximisedView');
+
+        }else{
+            $('#' + event.target.dataset.viewName + 'View').removeClass('maximisedView');
+            $('#' + event.target.dataset.viewName + 'View').removeClass('hiddenView');
+            $('#' + event.target.dataset.viewName + 'View').addClass('minifiedView');
+        }
+    }
+}
 
