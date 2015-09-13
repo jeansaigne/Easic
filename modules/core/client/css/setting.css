@@ -1,14 +1,18 @@
-#signHome{
-    text-align: center;
-    /*padding: 5%;*/
-}
-.signinupItem{
-    display: inline-block;
-    text-align: center;
-    /*margin: 20px;*/
-    /*margin-top: 15%;*/
-    /*font-size: x-large;*/
-}
-#socialNetworkContainer{
+#signHome {
+  text-align: center; }
 
-}
+.signinupItem {
+  display: inline-block;
+  text-align: center; }
+
+#socialNetworkContainer > div > section > div {
+  padding: 0;
+  text-align: center; }
+  #socialNetworkContainer > div > section > div > a {
+    display: inline-block;
+    width: calc(20% - 2px);
+    padding: 0;
+    margin: 0 1px; }
+    #socialNetworkContainer > div > section > div > a img {
+      width: 100%;
+      height: 100%; }

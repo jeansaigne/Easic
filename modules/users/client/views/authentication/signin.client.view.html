@@ -1,27 +1,23 @@
 <div data-ng-controller="AuthenticationController">
 	<div>
-		<form data-ng-submit="signin()" class="signin" autocomplete="off">
-			<fieldset>
-				<div class="form-group">
+		<form data-ng-submit="signin()" class="signin">
+			<div>
+				<md-input-container>
 					<label for="username">Username</label>
-					<input type="text" id="username" name="username" class="form-control"
-						   data-ng-model="credentials.username" placeholder="Username">
-				</div>
-				<div class="form-group">
-					<label for="password">Password</label>
-					<input type="password" id="password" name="password" class="form-control"
-						   data-ng-model="credentials.password" placeholder="Password">
-				</div>
-				<div class="text-center form-group">
-					<button type="submit" class="btn btn-primary">Sign in</button>
-				</div>
-				<div class="forgot-password">
-					<a data-ui-sref="password.forgot">Forgot your password?</a>
-				</div>
-				<div data-ng-show="error" class="text-center text-danger">
-					<strong data-ng-bind="error"></strong>
-				</div>
-			</fieldset>
+					<input id="username" data-ng-model="credentials.username" name="username" placeholder="Username">
+				</md-input-container>
+			</div>
+			<md-input-container flex>
+				<label>Password</label>
+				<input type="password" id="password" data-ng-model="credentials.password" name="password">
+			</md-input-container>
+			<md-button type="submit" class="md-primary md-raised" layout-fill>Sign in</md-button>
+			<div class="forgot-password">
+				<md-button class="md-raised md-warn" data-ui-sref="password.forgot">Forgot your password?</md-button>
+			</div>
+			<div data-ng-show="error" class="text-center text-danger">
+				<strong data-ng-bind="error"></strong>
+			</div>
 		</form>
 	</div>
 </div>
