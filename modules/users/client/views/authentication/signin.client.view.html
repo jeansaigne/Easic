@@ -12,9 +12,7 @@
 				<input type="password" id="password" data-ng-model="credentials.password" name="password">
 			</md-input-container>
 			<md-button type="submit" class="md-primary md-raised" layout-fill>Sign in</md-button>
-			<div class="forgot-password">
-				<md-button class="md-raised md-warn" data-ui-sref="password.forgot">Forgot your password?</md-button>
-			</div>
+			<md-button class="md-raised md-warn" data-ui-sref="password.forgot" layout-fill>Forgot your password?</md-button>
 			<div data-ng-show="error" class="text-center text-danger">
 				<strong data-ng-bind="error"></strong>
 			</div>
