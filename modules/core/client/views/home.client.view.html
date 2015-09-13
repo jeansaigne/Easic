@@ -1,4 +1,4 @@
-<section id="homeSection" class="fillContainer animated-rapier" data-ng-controller="HomeController">
+<section id="homeSection" class="fillContainer animated-rapier-transform" data-ng-controller="HomeController">
 	<div id="itemHomeLeft" class="item-home">
 		<div id="welcomeHomeDiv">
 			<h1>Bienvenue sur Eazic</h1>
@@ -29,20 +29,24 @@
 				</div>
 			</div>
 		</div>
-		<div id="exploreHomeDiv" class="home-feature-div home-feature-square" data-contentinfo="explore" onmouseenter="showContentInfo(event)">
+		<div id="exploreHomeDiv" class="home-feature-div home-feature-square" data-contentinfo="explore" onmouseenter="showContentInfo(event)" onmouseleave="hideOverlay(event)">
 			<h3>Explore</h3>
+			<div class="home-feature-overlay animated-rapier-transform">OVERLAY</div>
 		</div>
-		<div id="playerHomeDiv" class="home-feature-div home-feature-square" data-contentinfo="player" onmouseenter="showContentInfo(event)">
+		<div id="playerHomeDiv" class="home-feature-div home-feature-square" data-contentinfo="player" onmouseenter="showContentInfo(event)" onmouseleave="hideOverlay(event)">
 			<h3>Player</h3>
+			<div class="home-feature-overlay animated-rapier-transform">OVERLAY</div>
 		</div>
-		<div id="playlistHomeDiv" class="home-feature-div home-feature-square" data-contentinfo="playlist" onmouseenter="showContentInfo(event)">
+		<div id="playlistHomeDiv" class="home-feature-div home-feature-square" data-contentinfo="playlist" onmouseenter="showContentInfo(event)" onmouseleave="hideOverlay(event)">
 			<h3>Playlist</h3>
+			<div class="home-feature-overlay animated-rapier-transform">OVERLAY</div>
 		</div>
-		<div id="salonHomeDiv" class="home-feature-div home-feature-square" data-contentinfo="rooms" onmouseenter="showContentInfo(event)">
+		<div id="salonHomeDiv" class="home-feature-div home-feature-square" data-contentinfo="rooms" onmouseenter="showContentInfo(event)" onmouseleave="hideOverlay(event)">
 			<h3>Salon</h3>
+			<div class="home-feature-overlay animated-rapier-transform">OVERLAY</div>
 		</div>
 	</div>
-	<div class="item-home home-feature-div" id="settingHomeDiv">
+	<md-content class="item-home home-feature-div md-background" id="settingHomeDiv">
 
 		<div data-ng-show="authentication.user">
 			<div ng-click="authentication.settingView = 'default'">
@@ -62,22 +66,23 @@
 			<div data-ng-show="authentication.settingView == 'changePassword'" data-ng-include="'modules/users/views/settings/change-password.client.view.html'"></div>
 			<div data-ng-show="authentication.settingView == 'manageSocialAccount'" data-ng-include="'modules/users/views/settings/manage-social-accounts.client.view.html'"></div>
 		</div>
-		<div id="signHome" class="fillContainer" data-ng-hide="authentication.user">
+		<div id="signHome" data-ng-hide="authentication.user">
 			<div class="signinupItem" ng-init="authentication.showSignupForm = false">
-				<a ng-click="authentication.showSignupForm = !authentication.showSignupForm ; authentication.showSigninForm = false">S'inscrire</a>
+				<md-button class="md-primary md-raised md-hue-1
+				" ng-click="authentication.showSignupForm = true ; authentication.showSigninForm = false">S'inscrire</md-button>
 			</div>
 			<div class="signinupItem" ng-init="authentication.showSigninForm = false">
-				<a ng-click="authentication.showSigninForm = !authentication.showSigninForm; authentication.showSignupForm = false">Se logguer</a>
+				<md-button class="md-primary md-raised" ng-click="authentication.showSigninForm = true; authentication.showSignupForm = false">Se logguer</md-button>
 			</div>
-			<div ng-show="authentication.showSigninForm" data-ng-include="'modules/users/views/authentication/signin.client.view.html'"></div>
+			<div ng-hide="authentication.showSignupForm" data-ng-include="'modules/users/views/authentication/signin.client.view.html'"></div>
 			<div ng-show="authentication.showSignupForm" data-ng-include="'modules/users/views/authentication/signup.client.view.html'"></div>
 
 
-			<div id="socialNetworkContainer" class="fillContainer">
+			<div id="socialNetworkContainer">
 				<div class="fillContainer" data-ng-include="'modules/users/views/authentication/authentication.client.view.html'"></div>
 			</div>
 
 		</div>
-	</div>
+	</md-content>
 
 </section>

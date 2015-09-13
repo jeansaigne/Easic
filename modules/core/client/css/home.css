@@ -6,7 +6,6 @@
     display: inline-block;
     vertical-align: top;
     /*min-height: 60%;*/
-    height: 100%;
 }
 #itemHomeLeft{
     width: 60%;
@@ -41,7 +40,32 @@
     height: 100px;
     width: calc(25% - 3px);
     margin-top: 30px;
+    padding: 0;
+    position: relative;
+    overflow: hidden;
 }
+
+.home-feature-square > h3 {
+    margin: 0;
+    line-height: 100px;
+    cursor: pointer;
+}
+
+.home-feature-overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 100%;
+    background-color: rgba(0, 0, 0, 0.62);
+    line-height: 100px;
+    cursor: pointer;
+}
+
+#content-info {
+    height: calc(100% - 65px);
+    overflow: hidden;
+}
+
 #exploreHomeDiv{
     background-color: #F5A534;
     /*margin-right: 30px;*/
