@@ -25,38 +25,43 @@ function showOverlay(event) {
     var d = $(event.target).width() - event.layerX;
     var h = event.layerY;
     var b = $(event.target).height() - event.layerY;
-    console.log(g,h,d,b);
-    if (g<15) {
+    var contentOverlay = $(event.target).find('.home-feature-overlay').first();
+    var cssToApply = {};
+    console.log(g, h, d, b);
+    if (g < 15) {
         console.log("show gauche");
-        $(event.target).find('.home-feature-overlay').first().css({
-            left: '-100%' ,
-            top:'0',
-            transform: 'translateX(100%)'
-        });
+        cssToApply.left = '-100%';
+        cssToApply.top = 0;
+        cssToApply.transform = 'translateX(100%)';
+        contentOverlay.data('x',100);
+        contentOverlay.data('y',0);
     }
-    if (d<15) {
+    if (d < 15) {
         console.log("show droite");
-        $(event.target).find('.home-feature-overlay').first().css({
-            left: '100%' ,
-            top:0,
-            transform: 'translateX(-100%)'
-        });
+        cssToApply.left = '100%';
+        cssToApply.top = 0;
+        cssToApply.transform = 'translateX(-100%)';
+        contentOverlay.data('x',-100);
+        contentOverlay.data('y',0);
     }
-    if (h<15) {
+    if (h < 15) {
         console.log("show haut");
-        $(event.target).find('.home-feature-overlay').first().css({
-            top: '-100%' ,
-            left:0,
-            transform: 'translateY(100%)'
-        });
+        cssToApply.left = 0;
+        cssToApply.top = '-100%';
+        cssToApply.transform = 'translateY(100%)';
+        contentOverlay.data('y',100);
+        contentOverlay.data('x',0);
     }
-    if (b<15) {
+    if (b < 15) {
         console.log("show bas");
-        $(event.target).find('.home-feature-overlay').first().css({
-            top: '100%' ,
-            left: 0,
-            transform: 'translateY(-100%)'
-        });
+        cssToApply.left = 0;
+        cssToApply.top = '100%';
+        cssToApply.transform = 'translateY(-100%)';
+        contentOverlay.data('y',-100);
+        contentOverlay.data('x',0);
+    }
+    if (typeof(g) != 'undefined' && !isNaN(g)) {
+        contentOverlay.show().css(cssToApply);
     }
 }
 
@@ -66,40 +71,33 @@ function hideOverlay(event) {
     var d = $(event.target).width() - event.layerX;
     var h = event.layerY;
     var b = $(event.target).height() - event.layerY;
+    var contentOverlay = $(event.target).find('.home-feature-overlay').first();
+    var cssToApply = {};
     if (g<15) {
         console.log("hide gauche");
-        $(event.target).find('.home-feature-overlay').first().css({
-            transform: 'translateX(-100%)'
-        });
+        cssToApply.transform = 'translate3d('+(contentOverlay.data('x')-100)+'%, '+contentOverlay.data('y')+'%,0)';
     }
     if (d<15) {
         console.log("hide droite");
-        $(event.target).find('.home-feature-overlay').first().css({
-            //left: '0' ,
-            transform: 'translateX(100%)'
-        });
+        cssToApply.transform = 'translate3d('+(contentOverlay.data('x')+100)+'%,'+contentOverlay.data('y')+'%,0)';
     }
     if (h<15) {
         console.log("hide haut");
-        $(event.target).find('.home-feature-overlay').first().css({
-            top: '0' ,
-            transform: 'translateY(-100%)'
-        });
+        cssToApply.transform = 'translateY('+(contentOverlay.data('x'))+'%,'+(contentOverlay.data('y')-100)+'%,0)';
     }
     if (b<15) {
         console.log("hide bas");
-        $(event.target).find('.home-feature-overlay').first().css({
-            transform: 'translateY(100%)'
-        });
+        cssToApply.transform = 'translateY('+(contentOverlay.data('x'))+'%,'+(contentOverlay.data('y')+100)+'%,0)';
     }
-
+    contentOverlay.css(cssToApply);
     setTimeout(function() {
-        $(event.target).find('.home-feature-overlay').first().css({
+        contentOverlay.removeClass('animated-rapier-transform').css({
+            display:'none',
             top:'100%',
             left: 0,
-            transform: 'none'
-        })
-    },500);
+            '-webkit-transform': 'none'
+        }).addClass('animated-rapier-transform');
+    },400);
 }
 
 function blurHomePage(){

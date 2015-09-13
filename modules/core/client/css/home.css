@@ -49,6 +49,7 @@
 .home-feature-square > h3 {
     margin: 0;
     line-height: 100px;
+    cursor: pointer;
 }
 
 .home-feature-overlay {
@@ -58,7 +59,12 @@
     top: 100%;
     background-color: rgba(0, 0, 0, 0.62);
     line-height: 100px;
-    transition: transform 0.5s ease;
+    cursor: pointer;
+}
+
+#content-info {
+    height: calc(100% - 65px);
+    overflow: hidden;
 }
 
 #exploreHomeDiv{
