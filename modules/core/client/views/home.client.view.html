@@ -46,7 +46,7 @@
 			<div class="home-feature-overlay animated-rapier-transform">OVERLAY</div>
 		</div>
 	</div>
-	<md-content class="item-home home-feature-div md-background" id="settingHomeDiv">
+	<md-content class="item-home home-feature-div" id="settingHomeDiv">
 
 		<div data-ng-show="authentication.user">
 			<div ng-click="authentication.settingView = 'default'">
@@ -66,14 +66,16 @@
 			<div data-ng-show="authentication.settingView == 'changePassword'" data-ng-include="'modules/users/views/settings/change-password.client.view.html'"></div>
 			<div data-ng-show="authentication.settingView == 'manageSocialAccount'" data-ng-include="'modules/users/views/settings/manage-social-accounts.client.view.html'"></div>
 		</div>
-		<div id="signHome" data-ng-hide="authentication.user">
-			<div class="signinupItem" ng-init="authentication.showSignupForm = false">
-				<md-button class="md-primary md-raised md-hue-1
-				" ng-click="authentication.showSignupForm = true ; authentication.showSigninForm = false">S'inscrire</md-button>
-			</div>
-			<div class="signinupItem" ng-init="authentication.showSigninForm = false">
-				<md-button class="md-primary md-raised" ng-click="authentication.showSigninForm = true; authentication.showSignupForm = false">Se logguer</md-button>
-			</div>
+		<md-content id="signHome" data-ng-hide="authentication.user" layout="column" layout-fill>
+			<md-content layout="row">
+				<md-content class="signinupItem" ng-init="authentication.showSignupForm = false" flex>
+					<md-button class="md-primary md-raised md-hue-1
+					" ng-click="authentication.showSignupForm = true ; authentication.showSigninForm = false" layout-fill>S'inscrire</md-button>
+				</md-content>
+				<md-content class="signinupItem" ng-init="authentication.showSigninForm = false" flex>
+					<md-button class="md-primary md-raised" ng-click="authentication.showSigninForm = true; authentication.showSignupForm = false" layout-fill>Se logguer</md-button>
+				</md-content>
+			</md-content>
 			<div ng-hide="authentication.showSignupForm" data-ng-include="'modules/users/views/authentication/signin.client.view.html'"></div>
 			<div ng-show="authentication.showSignupForm" data-ng-include="'modules/users/views/authentication/signup.client.view.html'"></div>
 
@@ -82,7 +84,7 @@
 				<div class="fillContainer" data-ng-include="'modules/users/views/authentication/authentication.client.view.html'"></div>
 			</div>
 
-		</div>
+		</md-content>
 	</md-content>
 
 </section>

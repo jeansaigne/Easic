@@ -16,7 +16,7 @@ function showContentInfo(event) {
         divToHide.slideUp();
         divToShow.slideDown();
         squares.bind("mouseenter", showContentInfo);
-    }
+    } else return false;
     showOverlay(event);
 }
 

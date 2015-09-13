@@ -2,14 +2,16 @@
 	<div >
 		<form name="userForm" data-ng-submit="signup()" class="signin form-horizontal" novalidate autocomplete="off">
 			<fieldset>
-				<md-input-container>
-					<label for="firstName">First Name</label>
-					<input required id="firstName" data-ng-model="credentials.firstNameame" name="firstName">
-				</md-input-container>
-				<md-input-container>
-					<label for="lastName">Last Name</label>
-					<input required id="lastName" data-ng-model="credentials.lastName" name="lastName">
-				</md-input-container>
+
+				<md-content layout="column" class="md-primary" layout-fill>
+					<md-input-container layout-fill>
+						<label for="firstName">First Name</label>
+						<input required id="firstName" data-ng-model="credentials.firstNameame" name="firstName">
+					</md-input-container>
+					<md-input-container layout-fill>
+						<label for="lastName">Last Name</label>
+						<input required id="lastName" data-ng-model="credentials.lastName" name="lastName">
+					</md-input-container>
 				<md-input-container>
 					<label for="email">Email</label>
 					<input required id="email" data-ng-model="credentials.email" name="email">
@@ -22,12 +24,11 @@
 					<label for="password">Password</label>
 					<input required id="password" type="password" data-ng-model="credentials.password" name="password">
 				</md-input-container>
-				<div class="text-center form-group">
-					<md-button type="submit" class="md-raised md-primary" layout-fill>Sign up</md-button>
-				</div>
+				<md-button type="submit" class="md-raised md-primary" layout-fill>Sign up</md-button>
 				<div data-ng-show="error" class="text-center text-danger">
 					<strong data-ng-bind="error"></strong>
 				</div>
+				</md-content>
 			</fieldset>
 		</form>
 	</div>

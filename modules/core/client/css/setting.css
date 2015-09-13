@@ -5,14 +5,14 @@
   display: inline-block;
   text-align: center; }
 
-#socialNetworkContainer > div > section > div {
+#socialNetworkContainer > div > section > md-content {
   padding: 0;
   text-align: center; }
-  #socialNetworkContainer > div > section > div > a {
+  #socialNetworkContainer > div > section > md-content > a {
     display: inline-block;
     width: calc(20% - 2px);
     padding: 0;
     margin: 0 1px; }
-    #socialNetworkContainer > div > section > div > a img {
+    #socialNetworkContainer > div > section > md-content > a img {
       width: 100%;
       height: 100%; }
