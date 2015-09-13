@@ -35,16 +35,16 @@
 				</a>
 				<ul class="dropdown-menu">
 					<li data-ui-sref-active="active">
-						<a data-ui-sref="settings.profile">Edit Profile</a>
+						<a ng-click="authentication.settingView = 'editProfile'">Edit Profile</a><!--data-ui-sref="settings.profile"-->
 					</li>
 					<li data-ui-sref-active="active">
-						<a data-ui-sref="settings.picture">Change Profile Picture</a>
+						<a ng-click="authentication.settingView = 'changePicture'">Change Profile Picture</a><!--data-ui-sref="settings.picture"-->
 					</li>
 					<li data-ui-sref-active="active" data-ng-show="authentication.user.provider === 'local'">
-						<a data-ui-sref="settings.password">Change Password</a>
+						<a ng-click="authentication.settingView = 'changePassword'">Change Password</a><!--data-ui-sref="settings.password"-->
 					</li>
 					<li data-ui-sref-active="active">
-						<a data-ui-sref="settings.accounts">Manage Social Accounts</a>
+						<a ng-click="authentication.settingView = 'manageSocialAccount'">Manage Social Accounts</a><!--data-ui-sref="settings.accounts"-->
 					</li>
 					<li class="divider"></li>
 					<li>
