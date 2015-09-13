@@ -16,7 +16,8 @@
 		<div><a id="titleI" class="navbar-brand navbar-title">I</a></div>
 		<div><a id="titleC" class="navbar-brand navbar-title">C</a></div>
 	</div>
-	<nav class="collapse navbar-collapse" collapse="!isCollapsed" role="navigation">
+	<div id="navbarBorderBottom"></div>
+	<nav class="collapse navbar-collapse" collapse="!isCollapsed" role="navigation" >
 		<ul class="nav navbar-nav navbar-right" data-ng-hide="authentication.user">
 			<li data-ui-sref-active="active">
 				<a ng-click="authentication.showSignupForm = !authentication.showSignupForm ; authentication.showSigninForm = false">Sign Up</a><!--data-ui-sref="authentication.signup" target="_self"-->
@@ -28,7 +29,7 @@
 		</ul>
 		<ul id="settingMenu" class="nav navbar-nav navbar-right" data-ng-show="authentication.user">
 			<li id="menuItemSetting" class="dropdown">
-				<a href="#" class="dropdown-toggle user-header-dropdown-toggle" data-toggle="dropdown">
+				<a href="#" class="dropdown-toggle user-header-dropdown-toggle menu-item" data-toggle="dropdown">
 					<img data-ng-src="{{authentication.user.profileImageURL}}" class="header-profile-image"/><!--alt="{{authentication.user.displayName}}"-->
 					<!--<span data-ng-bind="authentication.user.displayName"></span> -->
 					<b class="caret"></b>
@@ -54,28 +55,24 @@
 			</li>
 		</ul>
 		<ul class="nav navbar-nav navbar-right">
-			<li id="menuItemExplore" class="menu-item" onmouseenter="blurHomePage()" onmouseleave="unBlurHomePage()">
-				<a>
-					Explore
-				</a>
+			<li id="menuItemExplore" class="menu-item" data-view-name="explore" onmouseenter="showViewMinified(event)" onmouseleave="hideViewMinified(event)">
+				<a>Explore</a>
+				<div id="exploreView" class="animated-rapier headerView hiddenView"></div>
 			</li>
-			<li id="menuItemPlayer" class="menu-item" onmouseenter="blurHomePage()" onmouseleave="unBlurHomePage()">
-				<a>
-					Player
-				</a>
+			<li id="menuItemPlayer" class="menu-item" data-view-name="player" onmouseenter="showViewMinified(event)" onmouseleave="hideViewMinified(event)">
+				<a>Player</a>
+				<div id="playerView" class="animated-rapier headerView hiddenView"></div>
 			</li>
-			<li id="menuItemPlaylist" class="menu-item" onmouseenter="blurHomePage()" onmouseleave="unBlurHomePage()">
-				<a>
-					Playlist
-				</a>
+			<li id="menuItemPlaylist" class="menu-item" data-view-name="playlist" onmouseenter="showViewMinified(event)" onmouseleave="hideViewMinified(event)">
+				<a>Playlist</a>
+				<div id="playlistView" class="animated-rapier headerView hiddenView"></div>
 			</li>
-			<li id="menuItemSalon" class="menu-item" onmouseenter="blurHomePage()" onmouseleave="unBlurHomePage()">
-				<a>
-					Salon
-				</a>
+			<li id="menuItemSalon" class="menu-item" data-view-name="salon" onmouseenter="showViewMinified(event)" onmouseleave="hideViewMinified(event)">
+				<a>Salon</a>
+				<div id="salonView" class="animated-rapier headerView hiddenView"></div>
 			</li>
 		</ul>
 	</nav>
-	<div id="navbarBorderBottom"></div>
+
 </div>
 

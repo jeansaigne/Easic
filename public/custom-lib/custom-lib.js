@@ -25,10 +25,18 @@ function unBlurHomePage(){
 }
 
 function toggleAllMenu() {
-//		$('#lecteurMinimizedView').removeClass('viewItemFull').addClass('displayNone').addClass('').removeClass('displayBlock');
-//		$('#rechercheMinimizedView').removeClass('viewItemFull').addClass('displayNone').addClass('').removeClass('displayBlock');
-//		$('#playlistMinimizedView').removeClass('viewItemFull').addClass('displayNone').addClass('').removeClass('displayBlock'),
-//				$('#gestionPlaylist').addClass('displayNone').removeClass('item50pourcent'),
-//				$('#fileDeLectureContent').removeClass('item50pourcent'), $('#realTimePlaylistListMinimized').removeClass('scrollable');
-//		$('#salonMinimizedView').removeClass('viewItemFull').addClass('displayNone').addClass('').removeClass('displayBlock');
 }
+
+function showViewMinified(event) {
+    if (typeof(event)!='undefined') {
+        blurHomePage();
+        $('#' + event.target.dataset.viewName + 'View').removeClass('hiddenView').addClass('minifiedView');
+    }
+}
+function hideViewMinified(event){
+    if (typeof(event)!='undefined') {
+        unBlurHomePage();
+        $('#' + event.target.dataset.viewName + 'View').addClass('hiddenView').removeClass('minifiedView');
+    }
+}
+

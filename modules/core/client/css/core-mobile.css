@@ -1,5 +1,6 @@
+/*
 .content {
-    margin-top: 50px;
+    /!*margin-top: 50px;*!/
 }
 .undecorated-link:hover {
     text-decoration: none;
@@ -40,7 +41,7 @@ a:hover .header-profile-image {
     font-family: 'Material Icons';
     font-style: normal;
     font-weight: 400;
-    src: url('/fonts/MaterialIcons-Regular.eot?#iefix') format('embedded-opentype'), /* For IE6-8 */
+    src: url('/fonts/MaterialIcons-Regular.eot?#iefix') format('embedded-opentype'), /!* For IE6-8 *!/
     local('Material Icons'),
     local('MaterialIcons-Regular'),
     url('/fonts/MaterialIcons-Regular.woff2') format('woff2'),
@@ -52,7 +53,7 @@ a:hover .header-profile-image {
     font-family: 'Material Icons';
     font-weight: normal;
     font-style: normal;
-    font-size: 24px;  /* Preferred icon size */
+    font-size: 24px;  /!* Preferred icon size *!/
     display: inline-block;
     width: 1em;
     height: 1em;
@@ -61,27 +62,26 @@ a:hover .header-profile-image {
     letter-spacing: normal;
     word-wrap: normal;
 
-    /* Support for all WebKit browsers. */
+    /!* Support for all WebKit browsers. *!/
     -webkit-font-smoothing: antialiased;
-    /* Support for Safari and Chrome. */
+    /!* Support for Safari and Chrome. *!/
     text-rendering: optimizeLegibility;
 
-    /* Support for Firefox. */
+    /!* Support for Firefox. *!/
     -moz-osx-font-smoothing: grayscale;
 
-    /* Support for IE. */
+    /!* Support for IE. *!/
     font-feature-settings: 'liga';
 }
 
 body{
     font-family: Oswald;
     background-image: url('/modules/core/img/imgfond.png');
-    /*min-width: 1000px;*/
 }
 header{
-    /*min-width: 1000px;*/
 }
 #bodyContent{
     background-color: transparent;
 }
 
+*/

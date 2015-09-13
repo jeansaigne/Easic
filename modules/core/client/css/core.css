@@ -1,5 +1,5 @@
 .content {
-	margin-top: 50px;
+	/*margin-top: 50px;*/
 }
 .undecorated-link:hover {
 	text-decoration: none;
@@ -88,3 +88,46 @@ a{
 	cursor: pointer;
 }
 
+
+#exploreView{
+	border-bottom: 5px solid #F5A534;
+}
+#playerView{
+	border-bottom: 5px solid #F54A39;
+}
+#playlistView{
+	border-bottom: 5px solid #2DCC70;
+}
+#salonView{
+	border-bottom: 5px solid #51B3D8;
+}
+.headerView{
+	position: absolute;
+	background-color: #333;
+	top: 50px;
+	z-index: 0;
+}
+.minifiedView{
+	width: 400%;
+	height: 300px;
+	/*z-index: ;*/
+}
+.hiddenView{
+	height: 300px;
+	width: 150px;
+	transform: translate3d(0, -100%, -10px);
+	/*opacity: 0;*/
+	z-index: 0;
+}
+#exploreView.minifiedView{
+	transform: translate3d(0, 0, 0px);
+}
+#playerView.minifiedView{
+	transform: translate3d(-150px, 0, 0px);
+}
+#playlistView.minifiedView{
+	transform: translate3d(-300px, 0, 0px);
+}
+#salonView.minifiedView{
+	transform: translate3d(-450px, 0, 0px);
+}
