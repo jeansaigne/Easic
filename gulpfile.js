@@ -94,9 +94,9 @@ gulp.task('cssmin', function () {
 // Sass task
 gulp.task('sass', function () {
 	return gulp.src(defaultAssets.client.sass)
-		.pipe(plugins.sass())
+		.pipe(plugins.sass({ indentedSyntax: true }))
 		.pipe(plugins.rename(function (path) {
-			path.dirname = path.dirname.replace('/scss', '/css');
+			path.dirname = path.dirname.replace('/sass', '/css');
 		}))
 		.pipe(gulp.dest('./modules/'));
 });
