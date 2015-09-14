@@ -3,8 +3,8 @@
 module.exports = {
 	db: process.env.MONGOHQ_URL || process.env.MONGOLAB_URI || 'mongodb://' + (process.env.DB_1_PORT_27017_TCP_ADDR || 'localhost') + '/sandbox',
 	facebook: {
-		clientID: process.env.FACEBOOK_ID || '289205664536716',
-		clientSecret: process.env.FACEBOOK_SECRET || '7f3f3deac84da91ab8b7c5c9c92f3c8d',
+		clientID: process.env.FACEBOOK_ID || '887089854717600',
+		clientSecret: process.env.FACEBOOK_SECRET || '0704868e586eb7101071ba882a99520e',
 		callbackURL: '/auth/facebook/callback'
 	},
 	twitter: {
