@@ -2,7 +2,7 @@
 
 module.exports = {
 	db: process.env.MONGOHQ_URL || process.env.MONGOLAB_URI || 'mongodb://' + (process.env.DB_1_PORT_27017_TCP_ADDR || 'localhost') + '/sandbox',
-	acebook: {
+	facebook: {
 		clientID: process.env.FACEBOOK_ID || '289205664536716',
 		clientSecret: process.env.FACEBOOK_SECRET || '7f3f3deac84da91ab8b7c5c9c92f3c8d',
 		callbackURL: '/auth/facebook/callback'
