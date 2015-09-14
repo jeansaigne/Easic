@@ -1,55 +1,51 @@
-<div class="container" data-ng-controller="HeaderController">
-	<div class="navbar-header">
-		<button class="navbar-toggle" type="button" data-ng-click="toggleCollapsibleMenu()">
-			<span class="sr-only">Toggle navigation</span>
-			<span class="icon-bar"></span>
-			<span class="icon-bar"></span>
-			<span class="icon-bar"></span>
-		</button>
-		<a data-ui-sref="home" class="navbar-brand">SandBox</a>
+<div class="" data-ng-controller="HeaderController">
+
+	<!--<div class="navbar-header">-->
+		<!--<button class="navbar-toggle" type="button" data-ng-click="toggleCollapsibleMenu()">-->
+			<!--<span class="sr-only">Toggle navigation</span>-->
+			<!--<span class="icon-bar"></span>-->
+			<!--<span class="icon-bar"></span>-->
+			<!--<span class="icon-bar"></span>-->
+		<!--</button>-->
+		<!--<a data-ui-sref="home" class="navbar-brand">Easic</a>-->
+	<!--</div>-->
+	<div id="navbarTitle">
+		<div><a id="titleE" class="navbar-brand navbar-title">E</a></div>
+		<div><a id="titleA" class="navbar-brand navbar-title">A</a></div>
+		<div><a id="titleZ" class="navbar-brand navbar-title">Z</a></div>
+		<div><a id="titleI" class="navbar-brand navbar-title">I</a></div>
+		<div><a id="titleC" class="navbar-brand navbar-title">C</a></div>
 	</div>
-	<nav class="collapse navbar-collapse" collapse="!isCollapsed" role="navigation">
-		<ul class="nav navbar-nav" data-ng-if="menu.shouldRender(authentication.user);">
-			<li data-ng-repeat="item in menu.items | orderBy: 'position'" data-ng-if="item.shouldRender(authentication.user);" ng-switch="item.type" data-ng-class="{active: $state.includes(item.state)}" class="{{item.class}}" dropdown="item.type === 'dropdown'">
-				<a ng-switch-when="dropdown" class="dropdown-toggle">
-					<span data-ng-bind="item.title"></span>
-					<b class="caret"></b>
-				</a>
-				<ul ng-switch-when="dropdown" class="dropdown-menu">
-					<li data-ng-repeat="subitem in item.items | orderBy: 'position'" data-ng-if="subitem.shouldRender(authentication.user);" data-ui-sref-active="active">
-						<a data-ui-sref="{{subitem.state}}" data-ng-bind="subitem.title"></a>
-					</li>
-				</ul>
-				<a ng-switch-default data-ui-sref="{{item.state}}" data-ng-bind="item.title"></a>
-			</li>
-		</ul>
+	<div id="navbarBorderBottom"></div>
+	<nav class="collapse navbar-collapse" collapse="!isCollapsed" role="navigation" >
 		<ul class="nav navbar-nav navbar-right" data-ng-hide="authentication.user">
 			<li data-ui-sref-active="active">
-				<a data-ui-sref="authentication.signup" target="_self">Sign Up</a>
+				<a ng-click="authentication.showSignupForm = !authentication.showSignupForm ; authentication.showSigninForm = false">Sign Up</a><!--data-ui-sref="authentication.signup" target="_self"-->
 			</li>
 			<li class="divider-vertical"></li>
 			<li data-ui-sref-active="active">
-				<a data-ui-sref="authentication.signin" target="_self">Sign In</a>
+				<a ng-click="authentication.showSigninForm = !authentication.showSigninForm ; authentication.showSignupForm = false">Sign In</a><!--data-ui-sref="authentication.signin" target="_self"-->
 			</li>
 		</ul>
-		<ul class="nav navbar-nav navbar-right" data-ng-show="authentication.user">
-			<li class="dropdown">
-				<a href="#" class="dropdown-toggle user-header-dropdown-toggle" data-toggle="dropdown">
-					<img data-ng-src="{{authentication.user.profileImageURL}}" alt="{{authentication.user.displayName}}" class="header-profile-image"/>
-					<span data-ng-bind="authentication.user.displayName"></span> <b class="caret"></b>
+		<ul id="settingMenu" class="nav navbar-nav navbar-right" data-ng-show="authentication.user">
+			<li id="menuItemSetting" class="dropdown">
+				<a href="#" class="dropdown-toggle user-header-dropdown-toggle menu-item" data-toggle="dropdown">
+					<img data-ng-src="{{authentication.user.profileImageURL}}" class="header-profile-image"/><!--alt="{{authentication.user.displayName}}"-->
+					<!--<span data-ng-bind="authentication.user.displayName"></span> -->
+					<b class="caret"></b>
 				</a>
 				<ul class="dropdown-menu">
 					<li data-ui-sref-active="active">
-						<a data-ui-sref="settings.profile">Edit Profile</a>
+						<a ng-click="authentication.settingView = 'editProfile'">Edit Profile</a><!--data-ui-sref="settings.profile"-->
 					</li>
 					<li data-ui-sref-active="active">
-						<a data-ui-sref="settings.picture">Change Profile Picture</a>
+						<a ng-click="authentication.settingView = 'changePicture'">Change Profile Picture</a><!--data-ui-sref="settings.picture"-->
 					</li>
 					<li data-ui-sref-active="active" data-ng-show="authentication.user.provider === 'local'">
-						<a data-ui-sref="settings.password">Change Password</a>
+						<a ng-click="authentication.settingView = 'changePassword'">Change Password</a><!--data-ui-sref="settings.password"-->
 					</li>
 					<li data-ui-sref-active="active">
-						<a data-ui-sref="settings.accounts">Manage Social Accounts</a>
+						<a ng-click="authentication.settingView = 'manageSocialAccount'">Manage Social Accounts</a><!--data-ui-sref="settings.accounts"-->
 					</li>
 					<li class="divider"></li>
 					<li>
@@ -58,5 +54,25 @@
 				</ul>
 			</li>
 		</ul>
+		<ul class="nav navbar-nav navbar-right">
+			<li id="menuItemExplore" class="menu-item" data-view-name="explore" onmouseenter="showViewMinified(event)" onmouseleave="hideViewMinified(event)">
+				<a data-view-name="explore" onclick="toggleView(event); event.stopPropagation();">Explore</a>
+				<div id="exploreView" class="animated-rapier headerView hiddenView"></div>
+			</li>
+			<li id="menuItemPlayer" class="menu-item" data-view-name="player" onmouseenter="showViewMinified(event)" onmouseleave="hideViewMinified(event)">
+				<a data-view-name="player" onclick="toggleView(event); event.stopPropagation();">Player</a>
+				<div id="playerView" class="animated-rapier headerView hiddenView"></div>
+			</li>
+			<li id="menuItemPlaylist" class="menu-item" data-view-name="playlist" onmouseenter="showViewMinified(event)" onmouseleave="hideViewMinified(event)">
+				<a data-view-name="playlist" onclick="toggleView(event); event.stopPropagation();">Playlist</a>
+				<div id="playlistView" class="animated-rapier headerView hiddenView"></div>
+			</li>
+			<li id="menuItemSalon" class="menu-item" data-view-name="salon" onmouseenter="showViewMinified(event)" onmouseleave="hideViewMinified(event)">
+				<a data-view-name="salon" onclick="toggleView(event); event.stopPropagation();">Salon</a>
+				<div id="salonView" class="animated-rapier headerView hiddenView"></div>
+			</li>
+		</ul>
 	</nav>
+
 </div>
+

@@ -1,0 +1,23 @@
+.fillContainer{
+    height: 100%;
+    width: 100%;
+}
+.opacity50{
+    opacity: 0.5;
+}
+.animated-rapier{
+    -webkit-transition: all 0.4s ease-in-out;
+    -moz-transition: all 0.4s ease-in-out;
+    -o-transition: all 0.4s ease-in-out;
+    transition: all 0.4s ease-in-out;
+    transform-style: flat;
+}
+.animated-rapier-transform{
+    -webkit-transition: transform 0.4s ease-in-out;
+    -moz-transition: transform 0.4s ease-in-out;
+    -o-transition: transform 0.4s ease-in-out;
+    transition: transform 0.4s ease-in-out;
+}
+.borderBottomGrey{
+    border-bottom: 5px solid #93A5A5;
+}

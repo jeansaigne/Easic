@@ -1,0 +1,95 @@
+#settingMenu{
+    float: right;
+}
+.menu-item{
+    position: relative;
+    background-color: #333;
+    height: 50px;
+    width : 150px;
+    /*z-index: 1;*/
+}
+.navbar-title{
+    padding-right: 5px;
+    padding-left: 5px;
+    width: 25px;
+    text-align: center;
+}
+#navbarTitle{
+    margin-left: 30px;
+    position: relative;
+    z-index: 1;
+}
+#navbarBorderBottom{
+    width: 100%;
+    height: 6px;
+    background-color: #93A5A5;
+    position: absolute;
+    bottom: -1px;
+}
+#titleE{
+    border-bottom: 5px solid #F5A534;
+}
+#titleA{
+    border-bottom: 5px solid #F54A39;
+}
+#titleZ{
+    border-bottom: 5px solid #2DCC70;
+}
+#titleI{
+    border-bottom: 5px solid #51B3D8;
+}
+#titleC{
+    border-bottom: 5px solid #DE0C83;
+}
+
+.menu-item a{
+    height: 50px;
+    padding-left: 35px !important;
+    padding-right: 35px !important;
+}
+#menuItemExplore a{
+    /*border-bottom: 5px solid #F5A534;*/
+}
+#menuItemPlayer a{
+    /*border-bottom: 5px solid #F54A39;*/
+}
+#menuItemPlaylist a{
+    /*border-bottom: 5px solid #2DCC70;*/
+}
+#menuItemSalon a{
+    /*border-bottom: 5px solid #51B3D8;*/
+}
+#menuItemSetting > a{
+    border-bottom: 5px solid #DE0C83;
+    height: 50px;
+}
+.menu-item > a{
+    z-index: 10;
+    position: relative;
+    background-color: #333;
+    height: 45px;
+}
+.menu-item:hover {
+    z-index: 50;
+}
+
+
+/*#menuItemExplore{*/
+    /*z-index: 104;*/
+/*}*/
+
+/*#menuItemPlayer{*/
+    /*z-index: 103;*/
+/*}*/
+/*#menuItemPlaylist{*/
+    /*z-index: 102;*/
+/*}*/
+/*#menuItemSalon{*/
+    /*z-index: 101;*/
+/*}*/
+/*#menuItemSetting{*/
+    /*z-index: 105;*/
+/*}*/
+/*.menu-item:hover{*/
+    /*z-index: 115;*/
+/*}*/

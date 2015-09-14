@@ -1,5 +1,5 @@
 .content {
-	margin-top: 50px;
+	/*margin-top: 50px;*/
 }
 .undecorated-link:hover {
 	text-decoration: none;
@@ -30,4 +30,132 @@ a:hover .header-profile-image {
 .user-header-dropdown-toggle {
 	padding-top: 11px !important;
 	padding-bottom: 11px !important;
+}
+
+.content {
+	height: 100%;
+}
+
+@font-face {
+	font-family: 'Material Icons';
+	font-style: normal;
+	font-weight: 400;
+	src: url('/fonts/MaterialIcons-Regular.eot?#iefix') format('embedded-opentype'), /* For IE6-8 */
+	local('Material Icons'),
+	local('MaterialIcons-Regular'),
+	url('/fonts/MaterialIcons-Regular.woff2') format('woff2'),
+	url('/fonts/MaterialIcons-Regular.woff') format('woff'),
+	url('/fonts/MaterialIcons-Regular.ttf') format('truetype');
+}
+
+.material-icons {
+	font-family: 'Material Icons';
+	font-weight: normal;
+	font-style: normal;
+	font-size: 24px;  /* Preferred icon size */
+	display: inline-block;
+	width: 1em;
+	height: 1em;
+	line-height: 1;
+	text-transform: none;
+	letter-spacing: normal;
+	word-wrap: normal;
+
+	/* Support for all WebKit browsers. */
+	-webkit-font-smoothing: antialiased;
+	/* Support for Safari and Chrome. */
+	text-rendering: optimizeLegibility;
+
+	/* Support for Firefox. */
+	-moz-osx-font-smoothing: grayscale;
+
+	/* Support for IE. */
+	font-feature-settings: 'liga';
+}
+
+body{
+	font-family: Oswald;
+	background-image: url('/modules/core/img/imgfond.png');
+	min-width: 1000px;
+}
+header{
+	min-width: 1000px;
+}
+#bodyContent{
+	background-color: transparent;
+}
+a{
+	cursor: pointer;
+}
+
+
+#exploreView{
+	border-bottom: 5px solid #F5A534;
+}
+#playerView{
+	border-bottom: 5px solid #F54A39;
+}
+#playlistView{
+	border-bottom: 5px solid #2DCC70;
+}
+#salonView{
+	border-bottom: 5px solid #51B3D8;
+}
+.headerView{
+	position: absolute;
+	background-color: #333;
+	top: 50px;
+	z-index: 0;
+	/*width: 150px;*/
+	/*background: -webkit-gradient(linear, left top, right top, from(rgba(51, 51, 51, 1)), to(rgba(51, 51, 51, 0.8)));*/
+	/*background: -webkit-linear-gradient(top, rgba(51, 51, 51, 1), rgba(51, 51, 51, 0.8));*/
+	/*background: -moz-linear-gradient(top, rgba(51, 51, 51, 1), rgba(51, 51, 51, 0.8));*/
+	/*background: -o-linear-gradient(top, rgba(51, 51, 51, 1), rgba(51, 51, 51, 0.8));*/
+	/*background: -ms-linear-gradient(top, rgba(51, 51, 51, 1), rgba(51, 51, 51, 0.8));*/
+	/*background: linear-gradient(top, rgba(51, 51, 51, 1), rgba(51, 51, 51, 0.8));*/
+}
+.hiddenView{
+	height: 300px;
+	width: 150px;
+	transform: translate3d(0, -100%, -10px);
+	/*opacity: 0;*/
+	z-index: 0;
+}
+.minifiedView{
+	width: 400%;
+	height: 300px;
+	/*z-index: ;*/
+}
+#exploreView.minifiedView{
+	transform: translate3d(0, 0, 0px);
+}
+#playerView.minifiedView{
+	transform: translate3d(-150px, 0, 0px);
+}
+#playlistView.minifiedView{
+	transform: translate3d(-300px, 0, 0px);
+}
+#salonView.minifiedView{
+	transform: translate3d(-450px, 0, 0px);
+}
+.maximisedView{
+	/*width: 800px;*/
+	/*height: 300px;*/
+	height: 80%;
+	width: 80%;
+	min-height: 300px;
+	max-height: 80%;
+	position: fixed;
+	left: 0;
+	margin: 3% 10%;
+	margin-top: 3%;
+	z-index: 0;
+	/*position: fixed;*/
+}
+#exploreView.maximisedView{
+	/*transform: translate3d(0, 0, +100px);*/
+	/*display: inline-block;*/
+	/*text-align: center;*/
+	/*transform: translate3d(-25%, 0, 0px);*/
+
 }

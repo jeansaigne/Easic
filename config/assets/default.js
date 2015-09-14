@@ -5,16 +5,21 @@ module.exports = {
 		lib: {
 			css: [
 				'public/lib/bootstrap/dist/css/bootstrap.css',
-				'public/lib/bootstrap/dist/css/bootstrap-theme.css'
+				'public/lib/bootstrap/dist/css/bootstrap-theme.css',
+				'public/lib/angular-material/angular-material.min.css'
 			],
 			js: [
 				'public/lib/angular/angular.js',
+				'public/lib/angular-aria/angular-aria.min.js',
 				'public/lib/angular-resource/angular-resource.js',
 				'public/lib/angular-animate/angular-animate.js',
 				'public/lib/angular-ui-router/release/angular-ui-router.js',
 				'public/lib/angular-ui-utils/ui-utils.js',
 				'public/lib/angular-bootstrap/ui-bootstrap-tpls.js',
-				'public/lib/angular-file-upload/dist/angular-file-upload.min.js'
+				'public/lib/angular-file-upload/dist/angular-file-upload.min.js',
+				'public/lib/angular-material/angular-material.min.js',
+				'public/lib/jquery/dist/jquery.js',
+				'public/custom-lib/custom-lib.js'
 			],
 			tests: ['public/lib/angular-mocks/angular-mocks.js']
 		},
@@ -25,7 +30,7 @@ module.exports = {
 			'modules/*/client/less/*.less'
 		],
 		sass: [
-			'modules/*/client/scss/*.scss'
+			'modules/*/client/sass/*.sass'
 		],
 		js: [
 			'modules/core/client/app/config.js',

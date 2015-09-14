@@ -3,7 +3,7 @@
 module.exports = {
 	db: 'mongodb://localhost/sandbox-dev',
 	app: {
-		title: 'SandBox - Development Environment'
+		title: 'Easic'
 	},
 	facebook: {
 		clientID: process.env.FACEBOOK_ID || 'APP_ID',

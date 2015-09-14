@@ -1,28 +1,75 @@
 <!-- The chat view -->
 <section class="container" data-ng-controller="ChatController">
     <div class="page-header">
-        <h1>Chat Example</h1>
+        <h1>Chat: {{room}}</h1>
     </div>
-	<!-- The message form -->
-	<form class="col-xs-12 col-md-offset-4 col-md-4" ng-submit="sendMessage();">
-		<fieldset class="row">
-			<div class="input-group">
-				<input type="text" id="messageText" name="messageText" class="form-control" data-ng-model="messageText" placeholder="Enter new message">
-                <span class="input-group-btn">
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </span>
-			</div>
-		</fieldset>
-	</form>
-    <ul class="list-unstyled">
-    <!-- List all messages -->
-    <li class="col-xs-12 col-md-offset-4 col-md-4 chat-message" data-ng-repeat="message in messages">
-        <small class="pull-right text-muted" data-ng-bind="message.created | date:'mediumTime'"></small>
-        <img data-ng-src="{{message.profileImageURL}}" alt="{{message.username}}" class="pull-left chat-profile-image"/>
-        <div class="pull-left chat-message-details">
-            <strong data-ng-bind="message.username"></strong><br>
-            <span data-ng-bind="message.text"></span>
-        </div>
-    </li>
-    </ul>
+    <md-content layout="row" layout-align="center start">
+        <md-content flex="20" layout-fill>
+            <md-toolbar class="md-warn">
+                <div class="md-toolbar-tools">
+                    <h2 class="md-flex">Rooms</h2>
+                </div>
+            </md-toolbar>
+            <md-list>
+                <md-list-item class="md-2-line" data-ng-repeat="(roomname,users) in rooms">
+                    <div class="md-list-item-text">
+                        <p layout-align="left center" layout="row"><i class="material-icons">chat</i><strong>{{roomname}}[{{users.length}}]</strong></p>
+                    </div>
+                </md-list-item>
+            </md-list>
+            <!-- Room choice form -->
+            <form class="col-xs-12 col-md-offset-4 col-md-4" ng-submit="join();" layout-fill>
+                <md-input-container>
+                    <div>
+                        <label>Enter room to join</label>
+                        <input type="text" id="roomToJoin" name="roomToJoin" class="form-control" data-ng-model="roomToJoin">
+                    </div>
+                    <md-button type="submit"  class="md-raised md-warn">Join</md-button>
+                </md-input-container>
+            </form>
+        </md-content>
+        <md-content flex="50" layout-fill>
+            <md-toolbar class="md-primary">
+                <div class="md-toolbar-tools">
+                    <h2 class="md-flex">{{room}}'s room</h2>
+                </div>
+            </md-toolbar>
+            <ul class="list-unstyled">
+                <!-- List all messages -->
+                <li class="col-xs-12 col-md-offset-4 col-md-4 chat-message" data-ng-repeat="message in messages" layout-fill>
+                    <small class="pull-right text-muted" data-ng-bind="message.created | date:'mediumTime'"></small>
+                    <img data-ng-src="{{message.profileImageURL}}" alt="{{message.username}}" class="pull-left chat-profile-image"/>
+                    <div class="pull-left chat-message-details">
+                        <strong data-ng-bind="message.username"></strong><br ng-if="message.type=='message'">
+                        <span data-ng-bind="message.text"></span>
+                    </div>
+                </li>
+            </ul>
+            <!-- The message form -->
+            <form class="col-xs-12 col-md-offset-4 col-md-4" ng-submit="sendMessage()" layout-fill>
+                <md-input-container>
+                    <div>
+                        <label>Enter new message</label>
+                        <input type="text" id="messageText" name="messageText" class="form-control" data-ng-model="messageText">
+                    </div>
+                    <md-button type="submit"  class="md-raised md-primary">Submit</md-button>
+                </md-input-container>
+            </form>
+        </md-content>
+        <md-content flex="20" layout-fill>
+            <md-toolbar class="md-primary md-hue-1">
+                <div class="md-toolbar-tools">
+                    <h2 class="md-flex">Users</h2>
+                </div>
+            </md-toolbar>
+            <md-list>
+                <md-list-item data-ng-repeat="user in rooms[room]">
+                    <div class="md-list-item-text">
+                        <p layout-align="left center" layout="row"><i class="material-icons md-24">person</i><strong>{{user}}</strong></p>
+                        <!--<md-icon class="md-secondary" ng-click="doSecondaryAction($event)" aria-label="Chat" md-svg-icon="communication:message"></md-icon>-->
+                    </div>
+                </md-list-item>
+            </md-list>
+        </md-content>
+    </md-content>
 </section>

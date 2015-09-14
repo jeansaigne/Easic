@@ -1,41 +1,34 @@
 <div data-ng-controller="AuthenticationController">
-	<h3 class="col-md-12 text-center">Or sign up using your email</h3>
-	<div class="col-xs-offset-2 col-xs-8 col-md-offset-5 col-md-2">
+	<div >
 		<form name="userForm" data-ng-submit="signup()" class="signin form-horizontal" novalidate autocomplete="off">
 			<fieldset>
-				<div class="form-group">
-					<label for="firstName">First Name</label>
-					<input type="text" required id="firstName" name="firstName" class="form-control"
-						   data-ng-model="credentials.firstName" placeholder="First Name">
-				</div>
-				<div class="form-group">
-					<label for="lastName">Last Name</label>
-					<input type="text" id="lastName" name="lastName" class="form-control"
-						   data-ng-model="credentials.lastName" placeholder="Last Name">
-				</div>
-				<div class="form-group">
+
+				<md-content layout="column" class="md-primary" layout-fill>
+					<md-input-container layout-fill>
+						<label for="firstName">First Name</label>
+						<input required id="firstName" data-ng-model="credentials.firstNameame" name="firstName">
+					</md-input-container>
+					<md-input-container layout-fill>
+						<label for="lastName">Last Name</label>
+						<input required id="lastName" data-ng-model="credentials.lastName" name="lastName">
+					</md-input-container>
+				<md-input-container>
 					<label for="email">Email</label>
-					<input type="email" id="email" name="email" class="form-control" data-ng-model="credentials.email"
-						   placeholder="Email">
-				</div>
-				<div class="form-group">
+					<input required id="email" data-ng-model="credentials.email" name="email">
+				</md-input-container>
+				<md-input-container>
 					<label for="username">Username</label>
-					<input type="text" id="username" name="username" class="form-control"
-						   data-ng-model="credentials.username" placeholder="Username">
-				</div>
-				<div class="form-group">
+					<input required id="username" data-ng-model="credentials.username" name="username">
+				</md-input-container>
+				<md-input-container>
 					<label for="password">Password</label>
-					<input type="password" id="password" name="password" class="form-control"
-						   data-ng-model="credentials.password" placeholder="Password">
-				</div>
-				<div class="text-center form-group">
-					<button type="submit" class="btn btn-large btn-primary">Sign up</button>
-					&nbsp; or&nbsp;
-					<a data-ui-sref="authentication.signin" class="show-signup">Sign in</a>
-				</div>
+					<input required id="password" type="password" data-ng-model="credentials.password" name="password">
+				</md-input-container>
+				<md-button type="submit" class="md-raised md-primary" layout-fill>Sign up</md-button>
 				<div data-ng-show="error" class="text-center text-danger">
 					<strong data-ng-bind="error"></strong>
 				</div>
+				</md-content>
 			</fieldset>
 		</form>
 	</div>
