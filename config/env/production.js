@@ -10,22 +10,22 @@ module.exports = {
 	twitter: {
 		clientID: process.env.TWITTER_KEY || '3GdhYHWifn7DI2dym636Kp9O5',
 		clientSecret: process.env.TWITTER_SECRET || 'hptITV1EiSHcHutnew2K1GJLQx1iHDkYwY9vtm09Eb1CdAKQ38',
-		callbackURL: '/auth/twitter/callback'
+		callbackURL: '/api/auth/twitter/callback'
 	},
 	google: {
 		clientID: process.env.GOOGLE_ID || '27426182957.apps.googleusercontent.com',
 		clientSecret: process.env.GOOGLE_SECRET || 'nqlzJsJxdEFZX7wF-p8o0hHd',
-		callbackURL: '/auth/google/callback'
+		callbackURL: '/api/auth/google/callback'
 	},
 	linkedin: {
 		clientID: process.env.LINKEDIN_ID || '771iljxjoiaar0',
 		clientSecret: process.env.LINKEDIN_SECRET || 'mPJ7VGla715iqAza',
-		callbackURL: '/auth/linkedin/callback'
+		callbackURL: '/api/auth/linkedin/callback'
 	},
 	github: {
 		clientID: process.env.GITHUB_ID || 'af91a0d1923f67e129de',
 		clientSecret: process.env.GITHUB_SECRET || '06c28eaafda9683241ed886b0d8cf57ff28737ba',
-		callbackURL: '/auth/github/callback'
+		callbackURL: '/api/auth/github/callback'
 	},
 	mailer: {
 		from: process.env.MAILER_FROM || 'MAILER_FROM',
