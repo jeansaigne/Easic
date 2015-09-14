@@ -225,24 +225,22 @@ module.exports.init = function (db) {
 	// Initialize Express view engine
 	this.initViewEngine(app);
 
-	if (process.env.NODE_ENV === 'production') {
-		var basic = auth.basic({
-				realm: 'eversound area',
-				skipUser: true
-			},
-			function (username, password, callback) {
-				callback(
-					(username === 'mc' && password === 'draheim') ||
-					(username === 'benjamin' && password === 'halflife') ||
-					(username === 'marie' && password === 'mariemillaire') ||
-					(username === 'lancien' && password === 'sebo2@XX') ||
-					(username === 'martin' && password === 'martinmartin') ||
-					(username === 'motown' && password === 'timmy') ||
-					(username === 'inconnu' && password === 'tutifruity')
-				);
-			});
-		app.use(auth.connect(basic));
-	}
+	var basic = auth.basic({
+			realm: 'eversound area',
+			skipUser: true
+		},
+		function(username, password, callback) {
+			callback(
+				(username === 'mc' && password === 'draheim') ||
+				(username === 'benjamin' && password === 'halflife') ||
+				(username === 'marie' && password === 'mariemillaire') ||
+				(username === 'lancien' && password === 'sebo2@XX') ||
+				(username === 'martin' && password === 'martinmartin') ||
+				(username === 'motown' && password === 'timmy') ||
+				(username === 'inconnu' && password === 'tutifruity')
+			);
+		});
+	app.use(auth.connect(basic));
 
 	// Initialize Express session
 	this.initSession(app, db);
