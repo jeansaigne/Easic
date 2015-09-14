@@ -16,7 +16,7 @@ module.exports = {
 				'public/lib/angular-ui-router/release/angular-ui-router.js',
 				'public/lib/angular-ui-utils/ui-utils.js',
 				'public/lib/angular-bootstrap/ui-bootstrap-tpls.js',
-				'public/lib/angular-file-upload/dist/angular-file-upload.min.js',
+				'public/lib/angular-file-upload/angular-file-upload.min.js',
 				'public/lib/angular-material/angular-material.min.js',
 				'public/lib/jquery/dist/jquery.js',
 				'public/custom-lib/custom-lib.js'
