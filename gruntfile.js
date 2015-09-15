@@ -190,7 +190,40 @@ module.exports = function (grunt) {
 					args: {} // Target-specific arguments
 				}
 			}
+		},
+		sshconfig: {
+			vps: {
+				host: '149.202.58.145',
+				username: 'mc',
+				password: 'draheim'
+				//agent: process.env.SSH_AUTH_SOCK,
+				//agentForward: true
+			}
+		},
+		sshexec: {
+			deploy: {
+				command: [
+					'cd /app/Easic',
+					'git pull origin master',
+					'npm install',
+					'grunt build',
+					'grunt forever:vps:stop',
+					'NODE_ENV=production grunt forever:vps:start'
+				].join(' && '),
+				options: {
+					config: 'vps'
+				}
+			}
+		},
+		forever: {
+			vps: {
+				options: {
+					index: 'server.js',
+					logDir: 'logs'
+				}
+			}
 		}
+
 	});
 
 	// Load NPM tasks 
@@ -230,4 +263,10 @@ module.exports = function (grunt) {
 
 	// Run the project in production mode
 	grunt.registerTask('prod', ['build', 'env:prod', 'concurrent:default']);
+
+	grunt.registerTask('deploy', ['sshexec:deploy']);
+
+	grunt.loadNpmTasks('grunt-forever');
+
+	grunt.loadNpmTasks('grunt-ssh');
 };
