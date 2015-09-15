@@ -194,8 +194,8 @@ module.exports = function (grunt) {
 		sshconfig: {
 			vps: {
 				host: '149.202.58.145',
-				username: 'mc',
-				password: 'draheim'
+				username: 'lardtiste',
+				password: 'halflife'
 				//agent: process.env.SSH_AUTH_SOCK,
 				//agentForward: true
 			}
