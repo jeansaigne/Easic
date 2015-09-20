@@ -20,8 +20,8 @@ exports.youtubeApi = function(params, callback) {
         for (var video in results.items) {
             var item = {};
             item.title = results.items[video].snippet.title;
-            item.type = 'youtube';
-            item.url = results.items[video].id.videoId || results.items[video].id.playlistId || results.items[video].id.channelId;
+            item.sourceName = 'youtube';
+            item.sourceId = results.items[video].id.videoId || results.items[video].id.playlistId || results.items[video].id.channelId;
             item.image = results.items[video].snippet.thumbnails.medium.url;
             item.kind = results.items[video].id.kind.slice(8);
             formattedResults.push(item);
@@ -52,8 +52,8 @@ exports.soundcloudApi = function(params, callback) {
         for (var video in results) {
             var item = {};
             item.title = results[video].title;
-            item.type = 'soundcloud';
-            item.url = results[video].stream_url;
+            item.sourceName = 'soundcloud';
+            item.sourceId = results[video].stream_url;
             item.image = results[video].artwork_url || '/images/sound_default.png';
             item.kind = results[video].kind;
             item.duration = results[video].duration;
@@ -101,8 +101,8 @@ exports.vimeoApi = function(params, callback) {
         for (var video in results.data) {
             var item = {};
             item.title = results.data[video].name;
-            item.type = 'vimeo';
-            item.url = results.data[video].uri;
+            item.sourceName = 'vimeo';
+            item.sourceId = results.data[video].uri;
             item.image = results.data[video].pictures.sizes[3].link || '/images/sound_default.png';
             item.embed = results.data[video].embed.html;
             formattedResults.push(item);
@@ -130,8 +130,8 @@ exports.deezerApi = function(params, callback) {
         for (var video in results.data) {
             var item = {};
             item.title = results.data[video].title;
-            item.type = 'deezer';
-            item.url = results.data[video].id;
+            item.sourceName = 'deezer';
+            item.sourceId = results.data[video].id;
             item.image = results.data[video].artist.picture_medium || '/images/sound_default.png';
             item.kind = results.data[video].type;
             item.duration = results.data[video].duration;
@@ -161,8 +161,8 @@ exports.spotifyApi = function(params, callback) {
         for (var video in results.tracks.items) {
             var item = {};
             item.title = results.tracks.items[video].name;
-            item.type = 'deezer';
-            item.url = results.tracks.items[video].href;
+            item.sourceName = 'deezer';
+            item.sourceId = results.tracks.items[video].href;
             item.image = results.tracks.items[video].album.images[1].url || '/images/sound_default.png';
             item.kind = results.tracks.items[video].type;
             item.duration = results.tracks.items[video].duration_ms;

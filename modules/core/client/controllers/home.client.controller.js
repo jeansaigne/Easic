@@ -5,6 +5,8 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
 		// This provides Authentication context.
 		$scope.authentication = Authentication;
 
+
+
 		$scope.changeLanguage = function (langKey) {
 			$translate.use(langKey);
 		};

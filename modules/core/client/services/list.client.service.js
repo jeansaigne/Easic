@@ -3,13 +3,25 @@
  */
 'use strict';
 
-angular.module('core').factory('PlaylistService', ['Authentication','$timeout','Socket',
-    function(Authentication, $timeout, Socket) {
+angular.module('core').factory('PlaylistService', ['Authentication','$timeout','Socket', 'Playlists',
+    function(Authentication, $timeout, Socket, Playlists) {
         var _this = this;
         var authentication = Authentication;
         _this._data = {
             sounds: window.sounds,
+            playlists: window.playlists,
+            updatePlaylists: function(){
+                var _this = this;
+                Playlists.query(function(result){
+                    //this.playlists = result;
+                    console.log(result);
+                });
+                Playlists.get({playlistId : authentication.user._id}, function(result){
+                    _this.playlists = result;
+                });
+            },
             sendCommand: function(nomCommand, sound, playlist, isDouble){
+                console.log("sendCommand");
                 var commande = {
                     nom : nomCommand,
                     sound: sound,
@@ -30,7 +42,8 @@ angular.module('core').factory('PlaylistService', ['Authentication','$timeout','
 
             },
             processCommand: function(command){
-                if((command.nom === 'addSound')&&(command.sound.url && (command.sound.url !== ''))){
+                console.log("processCommand");
+                if((command.nom === 'addSound')&&(command.sound.sourceId && (command.sound.sourceId !== ''))){
                     this.processAddSound(command.sound);
                 }else if(command.nom === 'deleteSound'){
                     this.processDeleteSound(command.sound);
@@ -57,6 +70,7 @@ angular.module('core').factory('PlaylistService', ['Authentication','$timeout','
                 if(typeof this.sounds === 'undefined'){
                     this.sounds = [];
                 }
+                console.log("processAdSound");
                 this.sounds.push(soundToAdd);
             },
             processDeleteSound: function(soundToDelete){
@@ -65,7 +79,7 @@ angular.module('core').factory('PlaylistService', ['Authentication','$timeout','
                     this.sounds = [];
                 }
                 this.sounds.forEach(function(sound, index){
-                    if(sound.url === soundToDelete.url){
+                    if(sound.sourceId === soundToDelete.url){
                         _this.sounds.splice(index, 1);
                     }
                 });
@@ -85,7 +99,7 @@ angular.module('core').factory('PlaylistService', ['Authentication','$timeout','
                 var tmp = [];
                 var tmpLast = [];
                 this.sounds.forEach(function(sound, index){
-                    if(sound.url === soundFirst.url){
+                    if(sound.sourceId === soundFirst.url){
                         indexOfSoundFirst = index;
                     }
                 });
