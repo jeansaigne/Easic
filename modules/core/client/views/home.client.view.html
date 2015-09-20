@@ -1,7 +1,7 @@
 <section id="homeSection" class="fillContainer animated-rapier" data-ng-controller="HomeController">
 	<div id="itemHomeLeft" class="item-home">
 		<div id="welcomeHomeDiv">
-			<h1>Bienvenue sur Eazic</h1>
+			<h1 ng-click="changeLanguage('en')">{{ 'HEADLINE' | translate }}</h1>
 			<div id="content-info">
 				<div class="content-info content-info-explore">
 					<h2>Explorer presentation</h2>
@@ -54,12 +54,12 @@
 			</div>
 			<div ng-init="authentication.settingView = 'default'" data-ng-show="authentication.settingView == 'default'">
 				<h3>Dernières recherches</h3>
-				<md-chips ng-model="ctrl.roFruitNames" readonly="ctrl.readonly">
-					<md-chip-template>
-						<strong>Apple</strong>
-						<em></em>
-					</md-chip-template>
-				</md-chips>
+				<!--<md-chips ng-model="ctrl.roFruitNames" readonly="ctrl.readonly">-->
+					<!--<md-chip-template>-->
+						<!--<strong>Apple</strong>-->
+						<!--<em></em>-->
+					<!--</md-chip-template>-->
+				<!--</md-chips>-->
 			</div>
 			<div data-ng-show="authentication.settingView == 'editProfile'" data-ng-include="'modules/users/views/settings/edit-profile.client.view.html'"></div>
 			<div data-ng-show="authentication.settingView == 'changePicture'" data-ng-include="'modules/users/views/settings/change-profile-picture.client.view.html'"></div>
