@@ -124,8 +124,9 @@ exports.list = function(req, res) { Playlist.find().sort('-created').populate('u
 	});
 };
 
-exports.playlistByUserID = function(req, res, id) {
-	Playlist.find({owner:id}).exec(function(err, playlists) {
+exports.playlistByUserID = function(req, res, next, id) {
+	console.log(id);
+	Playlist.find({owner: id}).exec(function(err, playlists) {
 		if (err) {
 			return res.status(400).send({
 				message: errorHandler.getErrorMessage(err)

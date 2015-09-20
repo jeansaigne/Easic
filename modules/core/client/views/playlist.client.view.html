@@ -16,7 +16,7 @@
             <ul>
                 <li ng-repeat="item in playlistService.playlists track by $index">
                     {{ item.title }}
-                    <span class="glyphicon glyphicon-trash" ng-click="removeSound(item)"></span>
+                    <span class="glyphicon glyphicon-trash" ng-click="removePlaylist(item)"></span>
                 </li>
             </ul>
         </md-content>

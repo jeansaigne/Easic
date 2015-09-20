@@ -7,6 +7,9 @@ angular.module('playlists').factory('Playlists', ['$resource',
 		}, {
 			update: {
 				method: 'PUT'
+			},
+			get : {
+				method : 'GET', isArray : true
 			}
 		});
 	}

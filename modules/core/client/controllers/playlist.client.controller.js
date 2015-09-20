@@ -10,6 +10,8 @@ angular.module('core').controller('PlaylistController', ['$scope', 'PlaylistServ
 
         $scope.playlistService = PlaylistService;
 
+        $scope.playlistService.updatePlaylists();
+
         $scope.removeSound = function(soundToDelete){
             $scope.playlistService.sendCommand('deleteSound', soundToDelete);
         };
@@ -30,21 +32,27 @@ angular.module('core').controller('PlaylistController', ['$scope', 'PlaylistServ
                 title : result,
                 sounds : soundsOfPlaylist
             };
+            $scope.create(playlist);
+        };
+
+        $scope.removePlaylist = function(playlist){
+            $scope.remove(playlist)
         };
 
         // Create new Playlist
-        $scope.create = function() {
+        $scope.create = function(playlist) {
             // Create new Playlist object
             var playlist = new Playlists ({
-                name: this.name
+                title: playlist.title,
+                description : "",
+                sounds : playlist.sounds
             });
 
             // Redirect after save
             playlist.$save(function(response) {
-                //$location.path('playlists/' + response._id);
+                console.log(response);
+                $scope.playlistService.updatePlaylists();
 
-                // Clear form fields
-                $scope.name = '';
             }, function(errorResponse) {
                 $scope.error = errorResponse.data.message;
             });
@@ -52,17 +60,13 @@ angular.module('core').controller('PlaylistController', ['$scope', 'PlaylistServ
 
         // Remove existing Playlist
         $scope.remove = function( playlist ) {
-            if ( playlist ) { playlist.$remove();
-
-                for (var i in $scope.playlists ) {
-                    if ($scope.playlists [i] === playlist ) {
-                        $scope.playlists.splice(i, 1);
-                    }
-                }
-            } else {
-                $scope.playlist.$remove(function() {
-                    //$location.path('playlists');
+            if ( playlist ) {
+                playlist.$remove(function(result){
+                    console.log(result);
+                    $scope.playlistService.updatePlaylists();
                 });
+
+
             }
         };
 
@@ -82,11 +86,11 @@ angular.module('core').controller('PlaylistController', ['$scope', 'PlaylistServ
             $scope.playlists = Playlists.query();
         };
 
-        // Find existing Playlist
-        $scope.findOne = function() {
-            $scope.playlist = Playlists.get({
-                playlistId: $stateParams.playlistId
-            });
-        };
+        //// Find existing Playlist
+        //$scope.findOne = function() {
+        //    $scope.playlist = Playlists.get({
+        //        playlistId: $stateParams.playlistId
+        //    });
+        //};
     }
 ]);
