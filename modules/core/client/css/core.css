@@ -120,10 +120,13 @@ a{
 	transform: translate3d(0, -100%, -10px);
 	/*opacity: 0;*/
 	z-index: 0;
+	overflow: hidden;
 }
 .minifiedView{
 	width: 400%;
 	height: 300px;
+	max-height: 800px;
+	overflow: scroll;
 	/*z-index: ;*/
 }
 #exploreView.minifiedView{
@@ -139,8 +142,6 @@ a{
 	transform: translate3d(-450px, 0, 0px);
 }
 .maximisedView{
-	/*width: 800px;*/
-	/*height: 300px;*/
 	height: 80%;
 	width: 80%;
 	min-height: 300px;
@@ -150,12 +151,8 @@ a{
 	margin: 3% 10%;
 	margin-top: 3%;
 	z-index: 0;
-	/*position: fixed;*/
+	overflow: scroll;
 }
 #exploreView.maximisedView{
-	/*transform: translate3d(0, 0, +100px);*/
-	/*display: inline-block;*/
-	/*text-align: center;*/
-	/*transform: translate3d(-25%, 0, 0px);*/
 
 }

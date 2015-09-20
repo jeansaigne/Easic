@@ -54,12 +54,12 @@
 			</div>
 			<div ng-init="authentication.settingView = 'default'" data-ng-show="authentication.settingView == 'default'">
 				<h3>Dernières recherches</h3>
-				<md-chips ng-model="ctrl.roFruitNames" readonly="ctrl.readonly">
-					<md-chip-template>
-						<strong>Apple</strong>
-						<em></em>
-					</md-chip-template>
-				</md-chips>
+				<!--<md-chips ng-model="ctrl.roFruitNames" readonly="ctrl.readonly">-->
+					<!--<md-chip-template>-->
+						<!--<strong>Apple</strong>-->
+						<!--<em></em>-->
+					<!--</md-chip-template>-->
+				<!--</md-chips>-->
 			</div>
 			<div data-ng-show="authentication.settingView == 'editProfile'" data-ng-include="'modules/users/views/settings/edit-profile.client.view.html'"></div>
 			<div data-ng-show="authentication.settingView == 'changePicture'" data-ng-include="'modules/users/views/settings/change-profile-picture.client.view.html'"></div>

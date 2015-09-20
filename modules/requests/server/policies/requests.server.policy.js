@@ -20,6 +20,12 @@ exports.invokeRolesPolicies = function() {
 		}, {
 			resources: '/api/requests/:requestId',
 			permissions: '*'
+		},{
+			resources: '/api/getMedias',
+			permissions: ['post']
+		}, {
+			resources: '/api/requests/getMedias',
+			permissions: ['get']
 		}]
 	}, {
 		roles: ['user'],
@@ -28,6 +34,12 @@ exports.invokeRolesPolicies = function() {
 			permissions: ['get', 'post']
 		}, {
 			resources: '/api/requests/:requestId',
+			permissions: ['get']
+		},{
+			resources: '/api/getMedias',
+			permissions: ['post']
+		}, {
+			resources: '/api/requests/getMedias',
 			permissions: ['get']
 		}]
 	}, {
@@ -39,8 +51,8 @@ exports.invokeRolesPolicies = function() {
 			resources: '/api/requests/:requestId',
 			permissions: ['get']
 		}, {
-			resources: '/api/requests/getMedias',
-			permissions: ['get']
+			resources: '/api/getMedias',
+			permissions: ['post']
 		}, {
 			resources: '/api/requests/getMedias',
 			permissions: ['get']

@@ -140,8 +140,10 @@ exports.getMedias = function(req, res) {
         };
         //console.log(asyncTasksTable);
         // Filter adapters if sources are set
+
         if (req.body.sources) {
-            for (var source in req.body.sources) {
+            for (var i = 0 ; i < req.body.sources.length ; i++) {
+				var source = req.body.sources[i]
                 asyncTasks.push(asyncTasksTable[source].bind(null, req.body));
             }
             //console.log(asyncTasks);
