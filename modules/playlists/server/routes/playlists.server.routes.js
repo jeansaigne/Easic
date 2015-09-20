@@ -9,11 +9,11 @@ module.exports = function(app) {
 		.get(playlists.list).all(playlistsPolicy.isAllowed)
 		.post(playlists.createPlaylist);
 
-	app.route('/api/playlists/:playlistId').all(playlistsPolicy.isAllowed)
-		.get(playlists.read).all(playlistsPolicy.hasPlaylistOwnerAuthorization)
+	app.route('/api/playlists/:userId').all(playlistsPolicy.isAllowed)
+		.get(playlists.playlistByUserID).all(playlistsPolicy.hasPlaylistOwnerAuthorization)
 		.put(playlists.updatePlaylist)
 		.delete(playlists.deletePlaylist);
 
 	// Finish by binding the Playlist middleware
-	app.param('playlistId', playlists.playlistByID);
+	app.param('userId', playlists.playlistByUserID);
 };
