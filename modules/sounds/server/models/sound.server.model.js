@@ -16,17 +16,15 @@ var SoundSchema = new Schema({
 	},
 	title: {
 		type: String,
-		default: '',
 		trim: true,
 		required: 'Title cannot be blank'
 	},
-	type: {
+	sourceName: {
 		type: String,
-		default: 0,
 		trim: true,
 		required: 'Type cannot be blank'
 	},
-	url: {
+	sourceId: {
 		type: String,
 		default: '',
 		trim: true,
@@ -38,9 +36,8 @@ var SoundSchema = new Schema({
 		trim: true
 	},
 	duration:{
-		type: String,
-		default: '00:00:00',
-		trim: true
+		type: timestamp,
+		default:0
 	},
 	image:{
 		type: String,
@@ -52,9 +49,14 @@ var SoundSchema = new Schema({
 		default: 0,
 		trim: true
 	},
-	user: {
-		type: Schema.ObjectId,
-		ref: 'User'
+	playlists: [{
+		type: Schema.Types.ObjectId,
+		ref: 'Playlist'
+	}],
+	owner: {
+		type: String,
+		trim: true,
+		default: 'unknown'
 	},
 	available: {
 		type: Boolean,
