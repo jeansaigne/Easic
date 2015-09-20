@@ -9,6 +9,45 @@ var _ = require('lodash'),
 	Playlist = mongoose.model('Playlist'),
 	errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller'));
 
+
+/*
+ *Create or Update Playlist
+ *  */
+
+exports.createPlaylist = function(req, res) {
+	var playlist = new Playlist(req.body);
+	playlist.owner = req.user;
+
+	playlist.save(function(err) {
+		if (err) {
+			return res.status(400).send({
+				message: errorHandler.getErrorMessage(err)
+			});
+		} else {
+			res.jsonp(playlist);
+		}
+	});
+};
+
+/**
+ * UpdatePlaylist a Playlist
+ */
+exports.updatePlaylist = function(req, res) {
+	var playlist = req.playlist ;
+
+	playlist = _.extend(playlist , req.body);
+
+	playlist.save(function(err) {
+		if (err) {
+			return res.status(400).send({
+				message: errorHandler.getErrorMessage(err)
+			});
+		} else {
+			res.jsonp(playlist);
+		}
+	});
+};
+
 /**
  * Create a Playlist
  */
@@ -34,6 +73,7 @@ exports.read = function(req, res) {
 	res.jsonp(req.playlist);
 };
 
+
 /**
  * Update a Playlist
  */
@@ -56,7 +96,7 @@ exports.update = function(req, res) {
 /**
  * Delete an Playlist
  */
-exports.delete = function(req, res) {
+exports.deletePlaylist = function(req, res) {
 	var playlist = req.playlist ;
 
 	playlist.remove(function(err) {
