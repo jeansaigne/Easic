@@ -9,23 +9,23 @@ angular.module('core').controller('ExploreController', ['$scope', 'Authenticatio
         $scope.authentication = Authentication;
 
         $scope.getSearch = function(){
-            Search.query({q : $scope.query, sources : ["youtube"]}, function(result){
+            Search.query({q : $scope.query, sources : ['youtube']}, function(result){
                 console.log(result);
                 $scope.youtubeResult = result[0].youtube.items;
             });
-            Search.query({q : $scope.query, sources : ["vimeo"]}, function(result){
+            Search.query({q : $scope.query, sources : ['vimeo']}, function(result){
                 console.log(result);
                 $scope.vimeoResult = result[0].vimeo.items;
             });
-            Search.query({q : $scope.query, sources : ["soundcloud"]}, function(result){
+            Search.query({q : $scope.query, sources : ['soundcloud']}, function(result){
                 console.log(result);
                 $scope.soundcloudResult = result[0].soundcloud.items;
             });
-            Search.query({q : $scope.query, sources : ["deezer"]}, function(result){
+            Search.query({q : $scope.query, sources : ['deezer']}, function(result){
                 console.log(result);
                 $scope.deezerResult = result[0].deezer.items;
             });
-            Search.query({q : $scope.query, sources : ["spotify"]}, function(result){
+            Search.query({q : $scope.query, sources : ['spotify']}, function(result){
                 console.log(result);
                 $scope.spotifyResult = result[0].spotify.items;
             });

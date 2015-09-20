@@ -143,7 +143,7 @@ exports.getMedias = function(req, res) {
 
         if (req.body.sources) {
             for (var i = 0 ; i < req.body.sources.length ; i++) {
-				var source = req.body.sources[i]
+				var source = req.body.sources[i];
                 asyncTasks.push(asyncTasksTable[source].bind(null, req.body));
             }
             //console.log(asyncTasks);
