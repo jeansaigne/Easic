@@ -1,10 +1,24 @@
 <div id="PlaylistViewContainer" data-ng-controller="PlaylistController">
-    <span class="glyphicon glyphicon-trash" ng-click="removeAllSound()"></span>
-    File de lecture :
-    <ul>
-        <li ng-repeat="item in playlistService.sounds track by $index">
-            {{ item.title }}
-            <span class="glyphicon glyphicon-trash" ng-click="removeSound(item)"></span>
-        </li>
-    </ul>
+    <md-content layout="row">
+        <md-content layout="column" layout-fill>
+            <span class="glyphicon glyphicon-save" ng-click="saveList()"></span>
+            <span class="glyphicon glyphicon-trash" ng-click="removeAllSound()"></span>
+            File de lecture :
+            <ul>
+                <li ng-repeat="item in playlistService.sounds track by $index">
+                    {{ item.title }}
+                    <span class="glyphicon glyphicon-trash" ng-click="removeSound(item)"></span>
+                </li>
+            </ul>
+        </md-content>
+        <md-content layout="column" layout-fill>
+            Playlists :
+            <ul>
+                <li ng-repeat="item in playlistService.playlists track by $index">
+                    {{ item.title }}
+                    <span class="glyphicon glyphicon-trash" ng-click="removeSound(item)"></span>
+                </li>
+            </ul>
+        </md-content>
+    </md-content>
 </div>

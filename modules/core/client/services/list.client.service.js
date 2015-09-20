@@ -9,6 +9,7 @@ angular.module('core').factory('PlaylistService', ['Authentication','$timeout','
         var authentication = Authentication;
         _this._data = {
             sounds: window.sounds,
+            playlists: window.playlists,
             sendCommand: function(nomCommand, sound, playlist, isDouble){
                 var commande = {
                     nom : nomCommand,
