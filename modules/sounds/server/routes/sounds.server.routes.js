@@ -9,11 +9,6 @@ module.exports = function(app) {
 		.get(sounds.list).all(soundsPolicy.isAllowed)
 		.post(sounds.create);
 
-	app.route('/api/sounds/:soundId').all(soundsPolicy.isAllowed)
-		.get(sounds.read)
-		.put(sounds.update)
-		.delete(sounds.delete);
-
 	// Finish by binding the Sound middleware
 	app.param('soundId', sounds.soundByID);
 };

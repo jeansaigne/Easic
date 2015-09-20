@@ -7,12 +7,12 @@ module.exports = function(app) {
 	// Playlists Routes
 	app.route('/api/playlists').all()
 		.get(playlists.list).all(playlistsPolicy.isAllowed)
-		.post(playlists.create);
+		.post(playlists.createPlaylist);
 
 	app.route('/api/playlists/:playlistId').all(playlistsPolicy.isAllowed)
-		.get(playlists.read)
-		.put(playlists.update)
-		.delete(playlists.delete);
+		.get(playlists.read).all(playlistsPolicy.hasPlaylistOwnerAuthorization)
+		.put(playlists.updatePlaylist)
+		.delete(playlists.deletePlaylist);
 
 	// Finish by binding the Playlist middleware
 	app.param('playlistId', playlists.playlistByID);
