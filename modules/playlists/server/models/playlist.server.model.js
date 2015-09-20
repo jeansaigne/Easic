@@ -51,13 +51,13 @@ var PlaylistSchema = new Schema({
 		sourceName: {
 			type: String,
 			trim: true,
-			required: 'Type cannot be blank'
+			required: 'sourceName cannot be blank'
 		},
 		sourceId: {
 			type: String,
 			default: '',
 			trim: true,
-			required: 'Url cannot be blank'
+			required: 'SourceId cannot be blank'
 		},
 		playlistId:{
 			type: String,
