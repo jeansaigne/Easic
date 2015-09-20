@@ -13,4 +13,7 @@ module.exports = function(app) {
 		.get(playlists.playlistByUserID).all(playlistsPolicy.hasPlaylistOwnerAuthorization)
 		.put(playlists.updatePlaylist)
 		.delete(playlists.deletePlaylist);
+
+	// Finish by binding the Playlist middleware
+	app.param('userId', playlists.playlistByUserID);
 };
