@@ -96,7 +96,7 @@ exports.update = function(req, res) {
 /**
  * Delete an Playlist
  */
-exports.delete = function(req, res) {
+exports.deletePlaylist = function(req, res) {
 	var playlist = req.playlist ;
 
 	playlist.remove(function(err) {

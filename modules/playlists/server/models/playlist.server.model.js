@@ -46,7 +46,7 @@ var PlaylistSchema = new Schema({
 		},
 		order: {
 			type: Number,
-			required: "Order cannot be null"
+			required: 'Order cannot be null'
 		},
 		sourceName: {
 			type: String,
@@ -65,7 +65,7 @@ var PlaylistSchema = new Schema({
 			trim: true
 		},
 		duration:{
-			type: timestamp,
+			type: Number,
 			default:0
 		},
 		image:{
@@ -77,15 +77,6 @@ var PlaylistSchema = new Schema({
 			type: Number,
 			default: 0,
 			trim: true
-		},
-		playlists: [{
-			type: Schema.Types.ObjectId,
-			ref: 'Playlist'
-		}],
-		owner: {
-			type: String,
-			trim: true,
-			default: 'unknown'
 		},
 		available: {
 			type: Boolean,

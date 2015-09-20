@@ -36,7 +36,7 @@ var SoundSchema = new Schema({
 		trim: true
 	},
 	duration:{
-		type: timestamp,
+		type: String,
 		default:0
 	},
 	image:{
