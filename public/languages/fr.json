@@ -1,0 +1,10 @@
+{
+  "HEADLINE": "Bienvenue sur Easic!",
+  "QUERY-INPUT-LABEL" : "Recherche",
+  "EDIT-PROFILE-LABEL" : "Modifier votre profil",
+  "EDIT-PICTURE-LABEL": "Changer d'image de profile",
+  "EDIT-PASSWORD-LABEL" : "Changer de mot de passe",
+  "MANAGE-SOCIAL-ACCOUNT-LABEL" : "Synchroniser avec d'autres applications",
+  "SIGNOUT-LABEL" : "Se déconnecter",
+  "USERNAME-LABEL" : "Nom d'utilisateur"
+}

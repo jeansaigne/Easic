@@ -31,25 +31,25 @@
 			<li id="menuItemSetting" class="dropdown">
 				<a href="#" class="dropdown-toggle user-header-dropdown-toggle menu-item" data-toggle="dropdown">
 					<img data-ng-src="{{authentication.user.profileImageURL}}" class="header-profile-image"/><!--alt="{{authentication.user.displayName}}"-->
-					<!--<span data-ng-bind="authentication.user.displayName"></span> -->
+					<span data-ng-bind="authentication.user.displayName"></span>
 					<b class="caret"></b>
 				</a>
 				<ul class="dropdown-menu">
 					<li data-ui-sref-active="active">
-						<a ng-click="authentication.settingView = 'editProfile'">Edit Profile</a><!--data-ui-sref="settings.profile"-->
+						<a ng-click="authentication.settingView = 'editProfile'">{{ 'EDIT-PROFILE-LABEL' | translate }}</a><!--data-ui-sref="settings.profile"-->
 					</li>
 					<li data-ui-sref-active="active">
-						<a ng-click="authentication.settingView = 'changePicture'">Change Profile Picture</a><!--data-ui-sref="settings.picture"-->
+						<a ng-click="authentication.settingView = 'changePicture'">{{ 'EDIT-PICTURE-LABEL' | translate }}</a><!--data-ui-sref="settings.picture"-->
 					</li>
 					<li data-ui-sref-active="active" data-ng-show="authentication.user.provider === 'local'">
-						<a ng-click="authentication.settingView = 'changePassword'">Change Password</a><!--data-ui-sref="settings.password"-->
+						<a ng-click="authentication.settingView = 'changePassword'">{{ 'EDIT-PASSWORD-LABEL' | translate }}</a><!--data-ui-sref="settings.password"-->
 					</li>
 					<li data-ui-sref-active="active">
-						<a ng-click="authentication.settingView = 'manageSocialAccount'">Manage Social Accounts</a><!--data-ui-sref="settings.accounts"-->
+						<a ng-click="authentication.settingView = 'manageSocialAccount'">{{ 'MANAGE-SOCIAL-ACCOUNT-LABEL' | translate }}</a><!--data-ui-sref="settings.accounts"-->
 					</li>
 					<li class="divider"></li>
 					<li>
-						<a href="/api/auth/signout" target="_self">Signout</a>
+						<a href="/api/auth/signout" target="_self">{{ 'SIGNOUT-LABEL' | translate }}</a>
 					</li>
 				</ul>
 			</li>
@@ -57,19 +57,32 @@
 		<ul class="nav navbar-nav navbar-right">
 			<li id="menuItemExplore" class="menu-item" data-view-name="explore" onmouseenter="showViewMinified(event)" onmouseleave="hideViewMinified(event)">
 				<a data-view-name="explore" onclick="toggleView(event); event.stopPropagation();">Explore</a>
-				<div id="exploreView" class="animated-rapier headerView hiddenView"></div>
+				<div id="exploreView" class="animated-rapier headerView hiddenView">
+					<!--<md-input-container md-no-float>-->
+						<!--<label>{{ 'QUERY-INPUT-LABEL' | translate }}</label>-->
+						<!--<input type="text" ng-model="recherche" required>-->
+					<!--</md-input-container>-->
+					<explore-container></explore-container>
+
+				</div>
 			</li>
 			<li id="menuItemPlayer" class="menu-item" data-view-name="player" onmouseenter="showViewMinified(event)" onmouseleave="hideViewMinified(event)">
 				<a data-view-name="player" onclick="toggleView(event); event.stopPropagation();">Player</a>
-				<div id="playerView" class="animated-rapier headerView hiddenView"></div>
+				<div id="playerView" class="animated-rapier headerView hiddenView">
+					<player-container></player-container>
+				</div>
 			</li>
 			<li id="menuItemPlaylist" class="menu-item" data-view-name="playlist" onmouseenter="showViewMinified(event)" onmouseleave="hideViewMinified(event)">
 				<a data-view-name="playlist" onclick="toggleView(event); event.stopPropagation();">Playlist</a>
-				<div id="playlistView" class="animated-rapier headerView hiddenView"></div>
+				<div id="playlistView" class="animated-rapier headerView hiddenView">
+					<playlist-container></playlist-container>
+				</div>
 			</li>
 			<li id="menuItemSalon" class="menu-item" data-view-name="salon" onmouseenter="showViewMinified(event)" onmouseleave="hideViewMinified(event)">
 				<a data-view-name="salon" onclick="toggleView(event); event.stopPropagation();">Salon</a>
-				<div id="salonView" class="animated-rapier headerView hiddenView"></div>
+				<div id="salonView" class="animated-rapier headerView hiddenView">
+					<salon-container></salon-container>
+				</div>
 			</li>
 		</ul>
 	</nav>

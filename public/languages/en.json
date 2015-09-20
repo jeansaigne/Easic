@@ -1,0 +1,13 @@
+{
+  "HEADLINE": "Welcome to Easic!",
+  "EDIT-PICTURE-LABEL": "Change Profile Picture",
+  "EDIT-PROFILE-LABEL" : "Edit profile",
+  "EDIT-PASSWORD-LABEL" : "Change Password",
+  "MANAGE-SOCIAL-ACCOUNT-LABEL" : "Manage Social Accounts",
+  "SIGNOUT-LABEL" : "Signout",
+
+  "QUERY-INPUT-LABEL" : "Search",
+
+  "USERNAME-LABEL" : "Username"
+
+}

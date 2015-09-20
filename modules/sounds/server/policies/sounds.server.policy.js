@@ -17,26 +17,17 @@ exports.invokeRolesPolicies = function() {
 		allows: [{
 			resources: '/api/sounds',
 			permissions: '*'
-		}, {
-			resources: '/api/sounds/:soundId',
-			permissions: '*'
 		}]
 	}, {
 		roles: ['user'],
 		allows: [{
 			resources: '/api/sounds',
-			permissions: ['get', 'post']
-		}, {
-			resources: '/api/sounds/:soundId',
-			permissions: ['get']
+			permissions: '*'
 		}]
 	}, {
 		roles: ['guest'],
 		allows: [{
 			resources: '/api/sounds',
-			permissions: ['get']
-		}, {
-			resources: '/api/sounds/:soundId',
 			permissions: ['get']
 		}]
 	}]);
